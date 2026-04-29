@@ -68,6 +68,143 @@ body { font-family:'Inter',-apple-system,sans-serif; background:#FAF8F4; color:#
 footer { background:#0F0F0F; color:white; text-align:center; padding:40px; margin-top:80px; }
 footer .fb { font-family:'Fraunces',serif; font-size:16px; margin-bottom:4px; }
 footer p { font-size:12px; opacity:.5; }
+
+/* === MOVIL === */
+@media (max-width: 768px) {
+  .page { padding: 32px 18px; }
+  .header { margin-bottom: 40px; }
+  .header h1 { font-size: 36px; line-height: 1.05; }
+  .header .sub { font-size: 16px; }
+  .header .totales { gap: 24px; padding-top: 24px; }
+  .header .totales .t .v { font-size: 22px; }
+
+  .leyenda { padding: 16px; gap: 10px; flex-direction: column; align-items: flex-start; }
+  .leyenda-item { gap: 8px; }
+  .leyenda-item span { font-size: 12px; }
+  .leyenda-item small { font-size: 11px; }
+
+  .sep { margin: 40px 0 28px; }
+  .sep-title { font-size: 26px; }
+  .sep-sub { font-size: 14px; margin-bottom: 28px; }
+
+  .tramo-block { margin-bottom: 36px; }
+  .tramo-header { gap: 10px; margin-bottom: 16px; }
+  .tramo-badge { font-size: 11px; padding: 4px 10px; }
+  .tramo-total { font-size: 17px; }
+  .tramo-pct-global { font-size: 12px; width: 100%; }
+
+  /* Reorganizar las filas en movil: nombre arriba, barra debajo, % al lado */
+  .fuente-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name pct"
+      "bar bar"
+      "info info";
+    gap: 6px 10px;
+    padding: 10px 12px;
+    background: #F5F2EE;
+    border: 1px solid #E5E0D5;
+    border-radius: 2px;
+  }
+  .fuente-name { grid-area: name; font-size: 12px; }
+  .bar-outer { grid-area: bar; height: 18px; }
+  .pct-t { grid-area: pct; font-size: 16px; align-self: center; }
+  .pct-f { grid-area: info; font-size: 11px; line-height: 1.4; }
+  .bar-inner span { font-size: 10px; }
+
+  /* Disclaimer */
+  div[style*="background:#F0EDE6"][style*="line-height:1.7"] {
+    padding: 20px 18px !important;
+    font-size: 14px !important;
+  }
+
+  /* Tabla compositiva: tarjetas en movil con secciones Total / Abril */
+  .tabla-comp { display: block; }
+  .tabla-comp thead, .tabla-comp tbody, .tabla-comp tr { display: block; }
+  .tabla-comp thead { display: none; }
+  .tabla-comp tbody tr {
+    background: #F5F2EE;
+    border: 1px solid #E5E0D5;
+    border-radius: 2px;
+    margin-bottom: 14px;
+    padding: 14px;
+  }
+  .tabla-comp tbody tr:nth-child(even) { background: #F5F2EE; }
+  .tabla-comp tbody tr:last-child { background: #EBEBEB; }
+  .tabla-comp td {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #E5E0D5;
+    font-size: 13px;
+  }
+  .tabla-comp td:last-child { border-bottom: none; }
+  /* Nombre de fuente (col 1) */
+  .tabla-comp td:first-child {
+    font-weight: 700;
+    font-size: 15px;
+    background: transparent;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0F0F0F;
+    margin-bottom: 6px;
+    grid-template-columns: 1fr;
+  }
+  .tabla-comp td:first-child::before { content: ""; display: none; }
+  .tabla-comp td::before {
+    color: #6E6A60;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  /* Sección TOTAL: cols 2-6 */
+  .tabla-comp td:nth-child(2) {
+    background: rgba(0,0,0,0.02);
+    padding-top: 10px;
+  }
+  .tabla-comp td:nth-child(2)::before { content: "TOTAL · Leads"; color: #6E6A60; }
+  .tabla-comp td:nth-child(3)::before { content: "TOTAL · Menos $500"; color: #B83A2E; }
+  .tabla-comp td:nth-child(4)::before { content: "TOTAL · $500 – $1k"; color: #B8862E; }
+  .tabla-comp td:nth-child(5)::before { content: "TOTAL · $1k – $3k"; color: #4A7C59; }
+  .tabla-comp td:nth-child(6)::before { content: "TOTAL · Más $3k"; color: #2E7D32; }
+  /* Separador antes de Abril */
+  .tabla-comp td:nth-child(7) {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 2px dashed #DDD8CD;
+    background: rgba(0,0,0,0.02);
+  }
+  .tabla-comp td:nth-child(7)::before { content: "ABRIL · Leads"; color: #6E6A60; font-weight: 700; }
+  .tabla-comp td:nth-child(8)::before { content: "ABRIL · Menos $500"; color: #B83A2E; }
+  .tabla-comp td:nth-child(9)::before { content: "ABRIL · $500 – $1k"; color: #B8862E; }
+  .tabla-comp td:nth-child(10)::before { content: "ABRIL · $1k – $3k"; color: #4A7C59; }
+  .tabla-comp td:nth-child(11)::before { content: "ABRIL · Más $3k"; color: #2E7D32; }
+  /* Quitar borde-left en movil */
+  .tabla-comp td[style*="border-left"] { border-left: none !important; }
+
+  .cell { flex-direction: row; align-items: center; gap: 8px; justify-content: flex-start; }
+  .cbar-outer { width: 80px; flex-shrink: 0; }
+  .cpct { font-size: 14px; }
+  .csm { font-size: 11px; margin-left: auto; }
+
+  .nota { padding: 18px 18px; }
+  .nota p { font-size: 13px; }
+
+  footer { padding: 32px 20px; }
+}
+
+/* === MOVIL ESTRECHO === */
+@media (max-width: 480px) {
+  .header h1 { font-size: 30px; }
+  .header .sub { font-size: 15px; }
+  .sep-title { font-size: 22px; }
+  .tramo-total { font-size: 16px; }
+  .pct-t { font-size: 15px; }
+  .fuente-name { font-size: 11px; }
+  .pct-f { font-size: 10px; }
+}
 </style>
 </head>
 <body>
@@ -191,106 +328,219 @@ footer p { font-size:12px; opacity:.5; }
 
 <hr class="sep">
 <div class="sep-title">Parte 2<br>Distribución <em>interna</em> de cada fuente</div>
-<p class="sep-sub">Cada fila representa una fuente de agendamiento. Las cuatro columnas muestran qué porcentaje de su audiencia se sitúa en cada tramo de capital declarado. La intensidad del color verde indica mayor presencia de leads cualificados.</p>
+<p class="sep-sub">Cada fila representa una fuente de agendamiento. Las primeras columnas muestran la composición acumulada de los cuatro meses; las últimas, únicamente el mes de Abril. Esto permite ver si el comportamiento reciente coincide o se desvía del comportamiento histórico de cada canal.</p>
 
 <table class="tabla-comp">
   <thead>
     <tr>
-      <th>Fuente</th>
-      <th>Total</th>
+      <th rowspan="2" style="vertical-align:bottom">Fuente</th>
+      <th colspan="5" style="text-align:center;background:#3A3A3A;border-right:2px solid #DDD8CD">Total acumulado · Enero – Abril 2026</th>
+      <th colspan="5" style="text-align:center;background:#0F0F0F">Solo Abril 2026</th>
+    </tr>
+    <tr>
+      <th style="text-align:center;background:#3A3A3A">Leads</th>
       <th style="background:#B83A2E">Menos $500</th>
       <th style="background:#B8862E">$500 – $1k</th>
       <th style="background:#4A7C59">$1k – $3k</th>
-      <th style="background:#2E7D32">Mas $3k</th>
+      <th style="background:#2E7D32;border-right:2px solid #DDD8CD">Más $3k</th>
+      <th style="text-align:center;background:#0F0F0F">Leads</th>
+      <th style="background:#B83A2E">Menos $500</th>
+      <th style="background:#B8862E">$500 – $1k</th>
+      <th style="background:#4A7C59">$1k – $3k</th>
+      <th style="background:#2E7D32">Más $3k</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>ADS</td><td style="text-align:center;font-weight:600">2.288</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:36%;background:#B83A2E"></div></div><div class="cpct">36%</div><div class="csm">826 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B8862E"></div></div><div class="cpct">31%</div><div class="csm">716 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">466 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:12%;background:#2E7D32"></div></div><div class="cpct">12%</div><div class="csm">280 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>SETTING</td><td style="text-align:center;font-weight:600">868</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:28%;background:#B83A2E"></div></div><div class="cpct" style="color:#2E7D32">28%</div><div class="csm">239 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:39%;background:#B8862E"></div></div><div class="cpct">39%</div><div class="csm">340 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:23%;background:#4A7C59"></div></div><div class="cpct">23%</div><div class="csm">198 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">91 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>CONSULTORÍA 1A1</td><td style="text-align:center;font-weight:600">977</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:36%;background:#B83A2E"></div></div><div class="cpct">36%</div><div class="csm">354 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:33%;background:#B8862E"></div></div><div class="cpct">33%</div><div class="csm">318 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:19%;background:#4A7C59"></div></div><div class="cpct">19%</div><div class="csm">188 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:12%;background:#2E7D32"></div></div><div class="cpct">12%</div><div class="csm">117 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>YOUTUBE</td><td style="text-align:center;font-weight:600">661</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B83A2E"></div></div><div class="cpct">31%</div><div class="csm">205 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:39%;background:#B8862E"></div></div><div class="cpct">39%</div><div class="csm">257 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">130 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">69 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>YOUTUBE LIVE</td><td style="text-align:center;font-weight:600">160</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:34%;background:#B83A2E"></div></div><div class="cpct">34%</div><div class="csm">54 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:36%;background:#B8862E"></div></div><div class="cpct">36%</div><div class="csm">58 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">32 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">16 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>NAYO</td><td style="text-align:center;font-weight:600">1.025</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:37%;background:#B83A2E"></div></div><div class="cpct">37%</div><div class="csm">381 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:35%;background:#B8862E"></div></div><div class="cpct">35%</div><div class="csm">356 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:18%;background:#4A7C59"></div></div><div class="cpct">18%</div><div class="csm">187 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">101 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>ANDRÉS GARZA</td><td style="text-align:center;font-weight:600">218</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:42%;background:#B83A2E"></div></div><div class="cpct" style="color:#B83A2E">42%</div><div class="csm">91 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:38%;background:#B8862E"></div></div><div class="cpct">38%</div><div class="csm">83 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:15%;background:#4A7C59"></div></div><div class="cpct">15%</div><div class="csm">32 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:6%;background:#2E7D32"></div></div><div class="cpct" style="color:#B83A2E">6%</div><div class="csm">12 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>JOSUÉ PEÑA</td><td style="text-align:center;font-weight:600">85</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:29%;background:#B83A2E"></div></div><div class="cpct" style="color:#2E7D32">29%</div><div class="csm">25 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B8862E"></div></div><div class="cpct">31%</div><div class="csm">26 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:24%;background:#4A7C59"></div></div><div class="cpct">24%</div><div class="csm">20 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:16%;background:#2E7D32"></div></div><div class="cpct" style="color:#2E7D32">16%</div><div class="csm">14 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>MORIS DIECK</td><td style="text-align:center;font-weight:600">81</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:38%;background:#B83A2E"></div></div><div class="cpct" style="color:#B83A2E">38%</div><div class="csm">31 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:41%;background:#B8862E"></div></div><div class="cpct">41%</div><div class="csm">33 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:16%;background:#4A7C59"></div></div><div class="cpct">16%</div><div class="csm">13 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:5%;background:#2E7D32"></div></div><div class="cpct" style="color:#B83A2E">5%</div><div class="csm">4 leads</div></div></td>
-    </tr>
-    <tr>
-      <td>RODNER</td><td style="text-align:center;font-weight:600">65</td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B83A2E"></div></div><div class="cpct">31%</div><div class="csm">20 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B8862E"></div></div><div class="cpct">31%</div><div class="csm">20 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:15%;background:#4A7C59"></div></div><div class="cpct">15%</div><div class="csm">10 leads</div></div></td>
-      <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:23%;background:#2E7D32"></div></div><div class="cpct" style="color:#2E7D32">23%</div><div class="csm">15 leads</div></div></td>
-    </tr>
-    <tr style="background:#EBEBEB;font-weight:700">
-      <td>TOTAL</td><td style="text-align:center;font-weight:700">6.457</td>
-      <td style="text-align:center"><span style="font-size:16px;font-weight:700">35%</span><br><small style="font-weight:400;color:#666">2.240 leads</small></td>
-      <td style="text-align:center"><span style="font-size:16px;font-weight:700">34%</span><br><small style="font-weight:400;color:#666">2.213 leads</small></td>
-      <td style="text-align:center"><span style="font-size:16px;font-weight:700">20%</span><br><small style="font-weight:400;color:#666">1.280 leads</small></td>
-      <td style="text-align:center"><span style="font-size:16px;font-weight:700">11%</span><br><small style="font-weight:400;color:#666">724 leads</small></td>
-    </tr>
+  <td>ADS</td>
+  <td style="text-align:center;font-weight:600">2,288</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:36%;background:#B83A2E"></div></div><div class="cpct">36%</div><div class="csm">826 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B8862E"></div></div><div class="cpct">31%</div><div class="csm">716 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">466 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:12%;background:#2E7D32"></div></div><div class="cpct">12%</div><div class="csm">280 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">458</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:40%;background:#B83A2E"></div></div><div class="cpct">40%</div><div class="csm">181 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:30%;background:#B8862E"></div></div><div class="cpct">30%</div><div class="csm">138 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:19%;background:#4A7C59"></div></div><div class="cpct">19%</div><div class="csm">86 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:12%;background:#2E7D32"></div></div><div class="cpct">12%</div><div class="csm">53 leads</div></div></td>
+</tr><tr>
+  <td>SETTING</td>
+  <td style="text-align:center;font-weight:600">868</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:28%;background:#B83A2E"></div></div><div class="cpct">28%</div><div class="csm">239 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:39%;background:#B8862E"></div></div><div class="cpct">39%</div><div class="csm">340 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:23%;background:#4A7C59"></div></div><div class="cpct">23%</div><div class="csm">198 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">91 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">142</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:23%;background:#B83A2E"></div></div><div class="cpct">23%</div><div class="csm">32 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:41%;background:#B8862E"></div></div><div class="cpct">41%</div><div class="csm">58 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:25%;background:#4A7C59"></div></div><div class="cpct">25%</div><div class="csm">36 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:11%;background:#2E7D32"></div></div><div class="cpct">11%</div><div class="csm">16 leads</div></div></td>
+</tr><tr>
+  <td>CONSULTORÍA 1A1</td>
+  <td style="text-align:center;font-weight:600">977</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:36%;background:#B83A2E"></div></div><div class="cpct">36%</div><div class="csm">354 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:33%;background:#B8862E"></div></div><div class="cpct">33%</div><div class="csm">318 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:19%;background:#4A7C59"></div></div><div class="cpct">19%</div><div class="csm">188 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:12%;background:#2E7D32"></div></div><div class="cpct">12%</div><div class="csm">117 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">246</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:37%;background:#B83A2E"></div></div><div class="cpct">37%</div><div class="csm">90 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:34%;background:#B8862E"></div></div><div class="cpct">34%</div><div class="csm">84 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:19%;background:#4A7C59"></div></div><div class="cpct">19%</div><div class="csm">47 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">25 leads</div></div></td>
+</tr><tr>
+  <td>YOUTUBE</td>
+  <td style="text-align:center;font-weight:600">661</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B83A2E"></div></div><div class="cpct">31%</div><div class="csm">205 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:39%;background:#B8862E"></div></div><div class="cpct">39%</div><div class="csm">257 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">130 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">69 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">58</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:33%;background:#B83A2E"></div></div><div class="cpct">33%</div><div class="csm">19 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:45%;background:#B8862E"></div></div><div class="cpct">45%</div><div class="csm">26 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:17%;background:#4A7C59"></div></div><div class="cpct">17%</div><div class="csm">10 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:5%;background:#2E7D32"></div></div><div class="cpct">5%</div><div class="csm">3 leads</div></div></td>
+</tr><tr>
+  <td>YOUTUBE LIVE</td>
+  <td style="text-align:center;font-weight:600">160</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:34%;background:#B83A2E"></div></div><div class="cpct">34%</div><div class="csm">54 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:36%;background:#B8862E"></div></div><div class="cpct">36%</div><div class="csm">58 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">32 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">16 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">45</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:33%;background:#B83A2E"></div></div><div class="cpct">33%</div><div class="csm">15 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:36%;background:#B8862E"></div></div><div class="cpct">36%</div><div class="csm">16 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">9 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:11%;background:#2E7D32"></div></div><div class="cpct">11%</div><div class="csm">5 leads</div></div></td>
+</tr><tr>
+  <td>NAYO</td>
+  <td style="text-align:center;font-weight:600">1,025</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:37%;background:#B83A2E"></div></div><div class="cpct">37%</div><div class="csm">381 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:35%;background:#B8862E"></div></div><div class="cpct">35%</div><div class="csm">356 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:18%;background:#4A7C59"></div></div><div class="cpct">18%</div><div class="csm">187 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:10%;background:#2E7D32"></div></div><div class="cpct">10%</div><div class="csm">101 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">112</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:50%;background:#B83A2E"></div></div><div class="cpct">50%</div><div class="csm">56 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:32%;background:#B8862E"></div></div><div class="cpct">32%</div><div class="csm">36 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:12%;background:#4A7C59"></div></div><div class="cpct">12%</div><div class="csm">14 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:5%;background:#2E7D32"></div></div><div class="cpct">5%</div><div class="csm">6 leads</div></div></td>
+</tr><tr>
+  <td>ANDRÉS GARZA</td>
+  <td style="text-align:center;font-weight:600">218</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:42%;background:#B83A2E"></div></div><div class="cpct">42%</div><div class="csm">91 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:38%;background:#B8862E"></div></div><div class="cpct">38%</div><div class="csm">83 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:15%;background:#4A7C59"></div></div><div class="cpct">15%</div><div class="csm">32 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:6%;background:#2E7D32"></div></div><div class="cpct">6%</div><div class="csm">12 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">23</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:43%;background:#B83A2E"></div></div><div class="cpct">43%</div><div class="csm">10 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:39%;background:#B8862E"></div></div><div class="cpct">39%</div><div class="csm">9 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:13%;background:#4A7C59"></div></div><div class="cpct">13%</div><div class="csm">3 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:4%;background:#2E7D32"></div></div><div class="cpct">4%</div><div class="csm">1 leads</div></div></td>
+</tr><tr>
+  <td>JOSUÉ PEÑA</td>
+  <td style="text-align:center;font-weight:600">85</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:29%;background:#B83A2E"></div></div><div class="cpct">29%</div><div class="csm">25 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B8862E"></div></div><div class="cpct">31%</div><div class="csm">26 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:24%;background:#4A7C59"></div></div><div class="cpct">24%</div><div class="csm">20 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:16%;background:#2E7D32"></div></div><div class="cpct">16%</div><div class="csm">14 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">13</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:15%;background:#B83A2E"></div></div><div class="cpct">15%</div><div class="csm">2 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:46%;background:#B8862E"></div></div><div class="cpct">46%</div><div class="csm">6 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#4A7C59"></div></div><div class="cpct">31%</div><div class="csm">4 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:8%;background:#2E7D32"></div></div><div class="cpct">8%</div><div class="csm">1 leads</div></div></td>
+</tr><tr>
+  <td>MORIS DIECK</td>
+  <td style="text-align:center;font-weight:600">81</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:38%;background:#B83A2E"></div></div><div class="cpct">38%</div><div class="csm">31 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:41%;background:#B8862E"></div></div><div class="cpct">41%</div><div class="csm">33 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:16%;background:#4A7C59"></div></div><div class="cpct">16%</div><div class="csm">13 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:5%;background:#2E7D32"></div></div><div class="cpct">5%</div><div class="csm">4 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">30</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:40%;background:#B83A2E"></div></div><div class="cpct">40%</div><div class="csm">12 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:47%;background:#B8862E"></div></div><div class="cpct">47%</div><div class="csm">14 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:7%;background:#4A7C59"></div></div><div class="cpct">7%</div><div class="csm">2 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:7%;background:#2E7D32"></div></div><div class="cpct">7%</div><div class="csm">2 leads</div></div></td>
+</tr><tr>
+  <td>RODNER</td>
+  <td style="text-align:center;font-weight:600">65</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B83A2E"></div></div><div class="cpct">31%</div><div class="csm">20 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:31%;background:#B8862E"></div></div><div class="cpct">31%</div><div class="csm">20 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:15%;background:#4A7C59"></div></div><div class="cpct">15%</div><div class="csm">10 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:23%;background:#2E7D32"></div></div><div class="cpct">23%</div><div class="csm">15 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">6</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:33%;background:#B83A2E"></div></div><div class="cpct">33%</div><div class="csm">2 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:67%;background:#B8862E"></div></div><div class="cpct">67%</div><div class="csm">4 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+</tr><tr>
+  <td>JORGE SERRATO</td>
+  <td style="text-align:center;font-weight:600">15</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:67%;background:#B83A2E"></div></div><div class="cpct">67%</div><div class="csm">10 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:7%;background:#B8862E"></div></div><div class="cpct">7%</div><div class="csm">1 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">3 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:7%;background:#2E7D32"></div></div><div class="cpct">7%</div><div class="csm">1 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">1</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:100%;background:#B83A2E"></div></div><div class="cpct">100%</div><div class="csm">1 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+</tr><tr>
+  <td>MARÍA PRIETO</td>
+  <td style="text-align:center;font-weight:600">6</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:33%;background:#B83A2E"></div></div><div class="cpct">33%</div><div class="csm">2 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:50%;background:#B8862E"></div></div><div class="cpct">50%</div><div class="csm">3 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:17%;background:#2E7D32"></div></div><div class="cpct">17%</div><div class="csm">1 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">1</td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:100%;background:#B8862E"></div></div><div class="cpct">100%</div><div class="csm">1 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+</tr><tr>
+  <td>ROBERT PAYARES</td>
+  <td style="text-align:center;font-weight:600">5</td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:40%;background:#B83A2E"></div></div><div class="cpct">40%</div><div class="csm">2 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:20%;background:#4A7C59"></div></div><div class="cpct">20%</div><div class="csm">1 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:40%;background:#2E7D32"></div></div><div class="cpct">40%</div><div class="csm">2 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">1</td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:100%;background:#2E7D32"></div></div><div class="cpct">100%</div><div class="csm">1 leads</div></div></td>
+</tr><tr>
+  <td>MARÍA A. REQUENA</td>
+  <td style="text-align:center;font-weight:600">3</td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:67%;background:#B8862E"></div></div><div class="cpct">67%</div><div class="csm">2 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:33%;background:#2E7D32"></div></div><div class="cpct">33%</div><div class="csm">1 leads</div></div></td>
+  <td style="text-align:center;font-weight:600;border-left:2px solid #DDD8CD">2</td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"><div class="cbar-inner" style="width:100%;background:#B8862E"></div></div><div class="cpct">100%</div><div class="csm">2 leads</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+  <td><div class="cell"><div class="cbar-outer"></div><div class="cpct" style="color:#ccc">—</div><div class="csm">0</div></div></td>
+</tr><tr style="background:#EBEBEB;font-weight:700">
+  <td>TOTAL</td>
+  <td style="text-align:center;font-weight:700">6,457</td>
+  <td style="text-align:center"><span style="font-size:16px;font-weight:700">35%</span><br><small style="font-weight:400;color:#666">2,240 leads</small></td>
+  <td style="text-align:center"><span style="font-size:16px;font-weight:700">34%</span><br><small style="font-weight:400;color:#666">2,213 leads</small></td>
+  <td style="text-align:center"><span style="font-size:16px;font-weight:700">20%</span><br><small style="font-weight:400;color:#666">1,280 leads</small></td>
+  <td style="text-align:center"><span style="font-size:16px;font-weight:700">11%</span><br><small style="font-weight:400;color:#666">724 leads</small></td>
+  <td style="text-align:center;font-weight:700;border-left:2px solid #DDD8CD">1,138</td>
+  <td style="text-align:center"><span style="font-size:16px;font-weight:700">37%</span><br><small style="font-weight:400;color:#666">420 leads</small></td>
+  <td style="text-align:center"><span style="font-size:16px;font-weight:700">35%</span><br><small style="font-weight:400;color:#666">394 leads</small></td>
+  <td style="text-align:center"><span style="font-size:16px;font-weight:700">19%</span><br><small style="font-weight:400;color:#666">211 leads</small></td>
+  <td style="text-align:center"><span style="font-size:16px;font-weight:700">10%</span><br><small style="font-weight:400;color:#666">113 leads</small></td>
+</tr>
   </tbody>
 </table>
 
 <div class="nota">
   <div class="nl">Lectura de los datos</div>
-  <p>Cada fila representa una fuente directa de agendamiento. Las cuatro columnas muestran cómo se distribuye internamente la audiencia de esa fuente entre los cuatro tramos de capital declarado.</p>
-  <p><strong>Audiencias con mayor proporción de leads cualificados:</strong> Setting (28% en el tramo inferior, el más bajo del análisis), Rodner (23% en el tramo superior), Josué Peña (16% en el tramo superior).</p>
-  <p><strong>Audiencias con mayor proporción de leads en el tramo inferior:</strong> Andrés Garza (42%), Moris Dieck (38%), Nayo (37%).</p>
-  <p><strong>Recordatorio:</strong> estos datos describen el lead que agenda directamente a través de ese calendario. No reflejan el impacto total de cada canal como pieza de marketing.</p>
+  <p>Cada fila representa una fuente directa de agendamiento. La sección izquierda muestra la composición acumulada del período Enero – Abril; la derecha, únicamente el mes de Abril.</p>
+  <p><strong>Tendencias observables al comparar ambos bloques:</strong> Setting mejora su cualificación en Abril respecto al acumulado (37% cualificados vs 33% del histórico). Nayo registra un descenso pronunciado (18% cualificados en Abril vs 28% del acumulado). Andrés Garza y Moris Dieck mantienen niveles bajos en ambos cortes.</p>
+  <p><strong>Sobre las muestras pequeñas en Abril:</strong> algunas fuentes registran pocos agendamientos en un solo mes, lo que reduce la representatividad estadística de su columna de Abril. La columna del acumulado ofrece una base más sólida para esas fuentes.</p>
+  <p><strong>Recordatorio metodológico:</strong> estos datos describen el lead que agenda directamente a través de ese calendario. No reflejan el impacto total de cada canal como pieza de marketing.</p>
 </div>
 
 </div>
