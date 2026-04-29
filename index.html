@@ -33,8 +33,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-
-.container { max-width: 1000px; margin: 0 auto; padding: 70px 40px 40px; }
+.container { max-width: 1080px; margin: 0 auto; padding: 70px 40px 40px; }
 
 .eyebrow {
   font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
@@ -54,7 +53,7 @@ h1 em { font-style: italic; color: var(--accent); }
 .note {
   background: var(--paper-2); border-left: 3px solid var(--ink);
   padding: 18px 22px; margin-bottom: 56px;
-  font-size: 13px; line-height: 1.6; color: var(--ink);
+  font-size: 13px; line-height: 1.6;
 }
 .note strong { font-weight: 600; }
 .note .n-label {
@@ -86,7 +85,6 @@ h1 em { font-style: italic; color: var(--accent); }
   gap: 12px; margin-bottom: 32px;
 }
 @media (max-width: 760px) { .highlights { grid-template-columns: 1fr; } }
-
 .hl { padding: 20px 22px; border: 1px solid var(--line); background: white; }
 .hl.green { background: var(--green-bg); border-color: #C8DBCD; }
 .hl.amber { background: var(--amber-bg); border-color: #E8D8B0; }
@@ -105,10 +103,11 @@ h1 em { font-style: italic; color: var(--accent); }
 .hl .hl-data { font-size: 13px; color: var(--muted); line-height: 1.55; }
 .hl .hl-data strong { color: var(--ink); font-weight: 600; }
 
+.table-section { margin-top: 28px; }
 .table-section h3 {
   font-family: var(--sans); font-size: 13px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.1em;
-  color: var(--muted); margin-top: 32px; margin-bottom: 14px;
+  color: var(--muted); margin-bottom: 14px;
 }
 
 .data-table {
@@ -125,11 +124,9 @@ h1 em { font-style: italic; color: var(--accent); }
 .data-table tr:last-child td { border-bottom: none; }
 .data-table .num { text-align: right; font-feature-settings: 'tnum' 1; }
 .data-table .name { font-weight: 600; }
-
 .data-table tr.row-good { background: var(--green-bg); }
 .data-table tr.row-watch { background: var(--amber-bg); }
 .data-table tr.row-low { background: var(--red-bg); }
-
 .cell-good { color: var(--green); font-weight: 700; }
 .cell-watch { color: var(--amber); font-weight: 700; }
 .cell-low { color: var(--red); font-weight: 700; }
@@ -147,6 +144,120 @@ h1 em { font-style: italic; color: var(--accent); }
 }
 .section-end strong { font-weight: 600; }
 
+/* MESES TABS */
+.month-tabs {
+  display: flex; gap: 0; margin-bottom: 0;
+  border-bottom: 2px solid var(--line);
+}
+.month-tab {
+  padding: 12px 24px; cursor: pointer;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em; color: var(--muted);
+  background: transparent; border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px; transition: all 0.2s;
+}
+.month-tab:hover { color: var(--ink); }
+.month-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.month-panel { display: none; padding-top: 20px; }
+.month-panel.active { display: block; }
+
+/* ANUNCIO BLOCKS */
+.ad-block {
+  background: white; border: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+.ad-block.no-data { opacity: 0.6; }
+.ad-header {
+  padding: 22px 26px; border-bottom: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; flex-wrap: wrap;
+}
+.ad-header .ad-name {
+  font-family: var(--serif); font-size: 22px; font-weight: 500;
+  letter-spacing: -0.015em;
+}
+.ad-header .ad-meta {
+  font-size: 12px; color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.ad-header .ad-meta strong { color: var(--ink); font-weight: 600; }
+
+.ad-quick {
+  padding: 18px 26px;
+  background: var(--paper-2);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+}
+@media (max-width: 760px) { .ad-quick { grid-template-columns: 1fr 1fr; } }
+.ad-quick .q {
+  background: white; padding: 14px 16px;
+}
+.ad-quick .q-lbl {
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; margin-bottom: 6px;
+}
+.ad-quick .q-val {
+  font-family: var(--serif); font-size: 22px; font-weight: 500;
+  letter-spacing: -0.01em; line-height: 1;
+}
+.ad-quick .q-val.green { color: var(--green); }
+.ad-quick .q-val.amber { color: var(--amber); }
+.ad-quick .q-val.red { color: var(--red); }
+.ad-quick .q-detail {
+  font-size: 11px; color: var(--muted); margin-top: 4px;
+}
+
+.ad-tag {
+  display: inline-block; padding: 4px 10px;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 700; margin-right: 6px;
+}
+.ad-tag.high-vol { background: var(--ink); color: white; }
+.ad-tag.qual { background: var(--green); color: white; }
+.ad-tag.balance { background: var(--accent); color: white; }
+.ad-tag.warn { background: var(--amber); color: white; }
+.ad-tag.alert { background: var(--red); color: white; }
+.ad-tag.small { background: var(--paper-2); color: var(--muted); }
+
+.ad-body {
+  padding: 22px 26px;
+}
+
+.ad-toggle {
+  margin-top: 14px;
+  padding: 10px 16px;
+  background: var(--paper-2); border: 1px solid var(--line);
+  font-size: 12px; font-weight: 600; color: var(--ink);
+  cursor: pointer; width: 100%; text-align: left;
+  letter-spacing: 0.04em;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ad-toggle:hover { background: var(--line); }
+.ad-toggle::after { content: '▾'; transition: transform 0.2s; }
+.ad-toggle.open::after { transform: rotate(180deg); }
+
+.ad-detail {
+  display: none; padding: 18px 0 4px;
+}
+.ad-detail.open { display: block; }
+.ad-detail h5 {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700; margin-bottom: 10px;
+  margin-top: 16px;
+}
+.ad-detail h5:first-child { margin-top: 0; }
+.ad-detail table { font-size: 12.5px; }
+.ad-detail table th { padding: 8px 10px; }
+.ad-detail table td { padding: 8px 10px; }
+
+.ad-no-data {
+  padding: 16px 22px; background: var(--paper-2);
+  font-size: 13px; color: var(--muted); font-style: italic;
+}
+
+/* DEFINITIONS */
 .defs {
   display: flex; flex-wrap: wrap; gap: 0;
   margin: 18px 0 28px;
@@ -167,6 +278,7 @@ h1 em { font-style: italic; color: var(--accent); }
   .defs .d:last-child { border-bottom: none; }
 }
 
+/* CIERRE */
 .closing {
   margin-top: 60px; padding: 28px 32px;
   background: var(--ink); color: white;
@@ -191,7 +303,7 @@ h1 em { font-style: italic; color: var(--accent); }
   margin-top: 0; border-top: 1px solid var(--line);
 }
 .footer-inner {
-  max-width: 1000px; margin: 0 auto;
+  max-width: 1080px; margin: 0 auto;
   display: flex; align-items: flex-end; justify-content: space-between;
   flex-wrap: wrap; gap: 18px;
 }
@@ -203,183 +315,1860 @@ h1 em { font-style: italic; color: var(--accent); }
 .footer-sub { font-size: 12px; color: var(--muted); }
 .footer-sig p { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.6; }
 @media (max-width: 600px) { .footer-sig p { text-align: left; } }
+
+/* TENDENCIA - barras simples */
+.trend-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 60px;
+  gap: 14px; align-items: center;
+  padding: 10px 14px; border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.trend-row:last-child { border-bottom: none; }
+.trend-row .t-name { font-weight: 600; }
+.trend-row .t-bars {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 4px; height: 24px;
+}
+.trend-row .t-bar {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: white;
+  border-radius: 2px;
+}
+.trend-row .t-bar.bar-good { background: var(--green); }
+.trend-row .t-bar.bar-mid { background: var(--accent-soft); color: var(--ink); }
+.trend-row .t-bar.bar-low { background: #C8B59A; color: var(--ink); }
+.trend-row .t-bar.bar-na { background: var(--paper-2); color: var(--muted); }
+.trend-row .t-trend {
+  font-size: 18px; text-align: center; font-weight: 700;
+}
+.trend-row .t-trend.up { color: var(--green); }
+.trend-row .t-trend.up-strong { color: var(--green); font-size: 22px; }
+.trend-row .t-trend.down { color: var(--amber); }
+.trend-row .t-trend.down-strong { color: var(--red); }
+.trend-row .t-trend.stable, .trend-row .t-trend.flat { color: var(--muted); }
+.trend-header {
+  display: grid; grid-template-columns: 180px 1fr 60px;
+  gap: 14px; padding: 10px 14px;
+  background: var(--ink); color: white;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 600;
+}
+.trend-header .t-bars-h {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 4px; text-align: center;
+}
+.trend-table-wrap { background: white; border: 1px solid var(--line); }
 </style>
 </head>
 <body>
-
 <div class="container">
-
   <div class="eyebrow">Análisis solicitado · Enero–Abril 2026</div>
   <h1>Análisis por <em>fuente</em><br>y por anuncio.</h1>
-  <p class="lead">Visibilidad sobre el comportamiento del lead que entra al embudo según la fuente directa y el anuncio de origen.</p>
+  <p class="lead">Visibilidad sobre el comportamiento del lead que entra al embudo según la fuente directa de agendamiento y según el anuncio de origen en campañas de pago.</p>
 
   <div class="note">
     <div class="n-label">Cómo leer estos datos</div>
     Los datos por <strong>fuente directa</strong> describen el calendario por el que el lead agendó. Una persona puede haber conocido VCP por podcast y agendar después por otra vía sin que el podcast quede registrado. Los datos por <strong>anuncio (ADS)</strong> tienen atribución directa: cada lead queda asociado al anuncio específico de origen.
   </div>
 
-  <!-- SECCIÓN 01 -->
-  <div class="section-block">
-    <div class="section-header">
-      <span class="num">01</span>
-      <h2>Cualificación por fuente directa</h2>
-    </div>
-    <p class="section-sub">9.165 leads únicos · Promedio global: 30,5% cualificados ($1k+) · 35,3% sin capacidad (&lt;$500)</p>
+<div class="section-block">
+  <div class="section-header">
+    <span class="num">01</span>
+    <h2>Cualificación por fuente directa</h2>
+  </div>
+  <p class="section-sub">8.056 agendas analizadas · 81% respondieron formulario · Promedio global: 30% cualificados ($1k+) · 35% sin capacidad (&lt;$500)</p>
 
-    <div class="highlights">
-      <div class="hl green">
-        <div class="hl-tag">Mejor cualificación</div>
-        <div class="hl-name">Setting</div>
-        <div class="hl-data">Solo <strong>27,5% &lt;$500</strong> · 33,4% cualificados · Tendencia mejorando: 33% → 22% en cuatro meses</div>
-      </div>
-      <div class="hl green">
-        <div class="hl-tag">Mejor podcast</div>
-        <div class="hl-name">Josué Peña</div>
-        <div class="hl-data"><strong>40,5% cualificados</strong> · 29,8% &lt;$500 · El podcast con mejor perfil de audiencia</div>
-      </div>
-      <div class="hl amber">
-        <div class="hl-tag">Tendencia a observar</div>
-        <div class="hl-name">Nayo</div>
-        <div class="hl-data">% &lt;$500 sube de <strong>35% en Enero a 50% en Abril</strong> · El cambio más marcado del periodo</div>
-      </div>
+  <div class="highlights">
+    <div class="hl green">
+      <div class="hl-tag">Mejor cualificación</div>
+      <div class="hl-name">Setting</div>
+      <div class="hl-data">% cualificados sube de <strong>30% en Enero a 37% en Abril</strong> · Única fuente con tendencia positiva clara</div>
     </div>
+    <div class="hl green">
+      <div class="hl-tag">Mejor podcast</div>
+      <div class="hl-name">Josué Peña</div>
+      <div class="hl-data">Promedio <strong>37% cualificados</strong> · El podcast con mejor perfil de audiencia financiera</div>
+    </div>
+    <div class="hl amber">
+      <div class="hl-tag">Tendencia a observar</div>
+      <div class="hl-name">Nayo</div>
+      <div class="hl-data">% &lt;$500 sube de <strong>35% en Enero a 50% en Abril</strong> · El cambio más marcado del periodo</div>
+    </div>
+  </div>
 
-    <div class="table-section">
-      <h3>Distribución por fuente directa (4 meses)</h3>
+  <div class="table-section">
+    <h3>Distribución por mes — selecciona el mes</h3>
+    <div class="month-tabs">
+      <button class="month-tab active" data-month="Enero">Enero</button>
+      <button class="month-tab" data-month="Febrero">Febrero</button>
+      <button class="month-tab" data-month="Marzo">Marzo</button>
+      <button class="month-tab" data-month="Abril">Abril</button>
+    </div>
+    <div class="month-panel active" data-month="Enero">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-style:italic;">Enero 2026 · 3,515 agendas · 33% cualificados · 33% &lt;$500</p>
       <table class="data-table">
-        <thead>
-          <tr><th>Fuente</th><th class="num">Leads</th><th class="num">% &lt;$500</th><th class="num">% Cualificados ($1k+)</th></tr>
-        </thead>
+        <thead><tr><th>Fuente</th><th class="num">Agendas</th><th class="num">&lt;$500</th><th class="num">$500-1k</th><th class="num">$1k-3k</th><th class="num">&gt;$3k</th><th class="num">% Cualif</th></tr></thead>
         <tbody>
-          <tr><td class="name">ADS</td><td class="num">2.227</td><td class="num">36,0%</td><td class="num">32,6%</td></tr>
-          <tr><td class="name">Nayo</td><td class="num">1.012</td><td class="num">37,2%</td><td class="num">28,1%</td></tr>
-          <tr><td class="name">Consultoría 1A1</td><td class="num">965</td><td class="num">36,5%</td><td class="num">31,1%</td></tr>
-          <tr class="row-good"><td class="name">Setting</td><td class="num">873</td><td class="num"><span class="cell-good">27,5%</span></td><td class="num">33,4%</td></tr>
-          <tr><td class="name">YouTube</td><td class="num">651</td><td class="num">30,4%</td><td class="num">30,7%</td></tr>
-          <tr><td class="name">Andrés Garza</td><td class="num">204</td><td class="num">40,7%</td><td class="num">21,1%</td></tr>
-          <tr><td class="name">YouTube Live</td><td class="num">156</td><td class="num">32,7%</td><td class="num">30,8%</td></tr>
-          <tr class="row-good"><td class="name">Josué Peña</td><td class="num">84</td><td class="num">29,8%</td><td class="num"><span class="cell-good">40,5%</span></td></tr>
-          <tr><td class="name">Moris Dieck</td><td class="num">79</td><td class="num">38,0%</td><td class="num">21,5%</td></tr>
-          <tr><td class="name">Rodner</td><td class="num">65</td><td class="num">30,8%</td><td class="num">38,5%</td></tr>
+          <tr class="row-good"><td class="name">ADS</td><td class="num">894</td><td class="num">33%</td><td class="num">32%</td><td class="num">22%</td><td class="num">13%</td><td class="num"="cell-good"><span class="cell-good">35%</span></td></tr>
+          <tr><td class="name">SETTING</td><td class="num">553</td><td class="num">32%</td><td class="num">38%</td><td class="num">21%</td><td class="num">9%</td><td class="num"><span>30%</span></td></tr>
+          <tr><td class="name">CONSULTORÍA 1A1</td><td class="num">478</td><td class="num">36%</td><td class="num">32%</td><td class="num">21%</td><td class="num">12%</td><td class="num"><span>32%</span></td></tr>
+          <tr><td class="name">YOUTUBE</td><td class="num">473</td><td class="num">29%</td><td class="num">40%</td><td class="num">18%</td><td class="num">13%</td><td class="num"><span>31%</span></td></tr>
+          <tr><td class="name">NAYO</td><td class="num">807</td><td class="num">35%</td><td class="num">34%</td><td class="num">21%</td><td class="num">11%</td><td class="num"><span>31%</span></td></tr>
+          <tr><td class="name">ANDRÉS GARZA</td><td class="num">105</td><td class="num">37%</td><td class="num">37%</td><td class="num">20%</td><td class="num">7%</td><td class="num"><span>26%</span></td></tr>
+          <tr class="row-good"><td class="name">YOUTUBE LIVE</td><td class="num">83</td><td class="num">29%</td><td class="num">35%</td><td class="num">24%</td><td class="num">12%</td><td class="num"="cell-good"><span class="cell-good">35%</span></td></tr>
+          <tr class="row-good"><td class="name">JOSUÉ PEÑA</td><td class="num">60</td><td class="num">30%</td><td class="num">26%</td><td class="num">23%</td><td class="num">21%</td><td class="num"="cell-good"><span class="cell-good">44%</span></td></tr>
+          <tr class="row-good"><td class="name">RODNER</td><td class="num">50</td><td class="num">23%</td><td class="num">19%</td><td class="num">19%</td><td class="num">39%</td><td class="num"="cell-good"><span class="cell-good">58%</span></td></tr>
+          <tr class="row-watch"><td class="name">JORGE SERRATO</td><td class="num">11</td><td class="num">60%</td><td class="num">20%</td><td class="num">20%</td><td class="num">0%</td><td class="num"><span>20%</span></td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="table-section">
-      <h3>Evolución mes a mes — % de leads &lt;$500</h3>
+    <div class="month-panel" data-month="Febrero">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-style:italic;">Febrero 2026 · 1,681 agendas · 31% cualificados · 34% &lt;$500</p>
       <table class="data-table">
-        <thead>
-          <tr><th>Fuente</th><th class="num">Enero</th><th class="num">Febrero</th><th class="num">Marzo</th><th class="num">Abril</th></tr>
-        </thead>
+        <thead><tr><th>Fuente</th><th class="num">Agendas</th><th class="num">&lt;$500</th><th class="num">$500-1k</th><th class="num">$1k-3k</th><th class="num">&gt;$3k</th><th class="num">% Cualif</th></tr></thead>
         <tbody>
-          <tr class="row-watch"><td class="name">Nayo</td><td class="num">35%</td><td class="num">34%</td><td class="num">49%</td><td class="num"><span class="cell-watch">50%</span></td></tr>
-          <tr><td class="name">ADS</td><td class="num">34%</td><td class="num">36%</td><td class="num">36%</td><td class="num">39%</td></tr>
-          <tr><td class="name">Consultoría 1A1</td><td class="num">36%</td><td class="num">40%</td><td class="num">33%</td><td class="num">37%</td></tr>
-          <tr><td class="name">YouTube</td><td class="num">30%</td><td class="num">28%</td><td class="num">37%</td><td class="num">32%</td></tr>
-          <tr class="row-good"><td class="name">Setting</td><td class="num">33%</td><td class="num">24%</td><td class="num">23%</td><td class="num"><span class="cell-good">22%</span></td></tr>
+          <tr><td class="name">ADS</td><td class="num">520</td><td class="num">37%</td><td class="num">30%</td><td class="num">21%</td><td class="num">12%</td><td class="num"><span>33%</span></td></tr>
+          <tr class="row-good"><td class="name">SETTING</td><td class="num">290</td><td class="num">24%</td><td class="num">40%</td><td class="num">25%</td><td class="num">12%</td><td class="num"="cell-good"><span class="cell-good">36%</span></td></tr>
+          <tr><td class="name">CONSULTORÍA 1A1</td><td class="num">227</td><td class="num">40%</td><td class="num">34%</td><td class="num">16%</td><td class="num">10%</td><td class="num"><span>26%</span></td></tr>
+          <tr><td class="name">YOUTUBE</td><td class="num">212</td><td class="num">28%</td><td class="num">40%</td><td class="num">22%</td><td class="num">10%</td><td class="num"><span>32%</span></td></tr>
+          <tr><td class="name">NAYO</td><td class="num">249</td><td class="num">34%</td><td class="num">38%</td><td class="num">16%</td><td class="num">12%</td><td class="num"><span>28%</span></td></tr>
+          <tr class="row-watch"><td class="name">ANDRÉS GARZA</td><td class="num">70</td><td class="num">47%</td><td class="num">33%</td><td class="num">18%</td><td class="num">2%</td><td class="num"><span>20%</span></td></tr>
+          <tr><td class="name">YOUTUBE LIVE</td><td class="num">46</td><td class="num">34%</td><td class="num">37%</td><td class="num">20%</td><td class="num">9%</td><td class="num"><span>29%</span></td></tr>
+          <tr class="row-good"><td class="name">JOSUÉ PEÑA</td><td class="num">26</td><td class="num">35%</td><td class="num">30%</td><td class="num">25%</td><td class="num">10%</td><td class="num"="cell-good"><span class="cell-good">35%</span></td></tr>
+          <tr><td class="name">RODNER</td><td class="num">26</td><td class="num">38%</td><td class="num">31%</td><td class="num">8%</td><td class="num">23%</td><td class="num"><span>31%</span></td></tr>
+          <tr><td class="name">MARÍA PRIETO</td><td class="num">8</td><td class="num">40%</td><td class="num">40%</td><td class="num">0%</td><td class="num">20%</td><td class="num"><span>20%</span></td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="section-end">
-      Setting es la fuente con mejor cualificación financiera del lead que entra y es la única con tendencia decreciente clara en % de leads sin capacidad. Nayo y ADS muestran tendencia creciente. Consultoría 1A1 y YouTube se mantienen en rangos similares.
-    </div>
-  </div>
-
-  <!-- SECCIÓN 02 -->
-  <div class="section-block">
-    <div class="section-header">
-      <span class="num">02</span>
-      <h2>Análisis por anuncio (ADS)</h2>
-    </div>
-    <p class="section-sub">~17.000 optins en 4 meses · 12% conversión optin a agenda · Ticket medio $1.600</p>
-
-    <div class="highlights">
-      <div class="hl green">
-        <div class="hl-tag">Mejor cualificación</div>
-        <div class="hl-name">Ad 7 — Perdiste antes</div>
-        <div class="hl-data"><strong>64% cualificados</strong> · solo 9% &lt;$500 · Ticket $3.048 · Volumen bajo (46 optins)</div>
-      </div>
-      <div class="hl green">
-        <div class="hl-tag">Mejor balance</div>
-        <div class="hl-name">Reel IA 1</div>
-        <div class="hl-data">1.554 optins · <strong>49% show rate</strong> · 35% conversión · CC $50,6k</div>
-      </div>
-      <div class="hl red">
-        <div class="hl-tag">Métrica a observar</div>
-        <div class="hl-name">Reel Gladys 6</div>
-        <div class="hl-data">4.235 optins pero <strong>solo 2% agenda</strong> · 49% &lt;$500 · Ticket $1.167</div>
-      </div>
-    </div>
-
-    <div class="defs">
-      <div class="d">
-        <div class="d-tag">Optin</div>
-        <div class="d-text">Dejó email en el formulario</div>
-      </div>
-      <div class="d">
-        <div class="d-tag">Agenda</div>
-        <div class="d-text">Agendó al menos una cita</div>
-      </div>
-      <div class="d">
-        <div class="d-tag">Showed</div>
-        <div class="d-text">Se presentó a la llamada</div>
-      </div>
-      <div class="d">
-        <div class="d-tag">Compró</div>
-        <div class="d-text">Cerró venta</div>
-      </div>
-    </div>
-
-    <div class="table-section">
-      <h3>Embudo completo por anuncio · ordenado por CC</h3>
-      <div style="overflow-x:auto;">
-      <table class="data-table" style="min-width:1100px;">
-        <thead>
-          <tr>
-            <th>Anuncio</th>
-            <th class="num">Optin</th>
-            <th class="num">Agenda</th>
-            <th class="num">AG/Opt</th>
-            <th class="num">Showed</th>
-            <th class="num">SH/AG</th>
-            <th class="num">Ventas</th>
-            <th class="num">C/SH</th>
-            <th class="num">CC</th>
-            <th class="num">Ticket</th>
-            <th class="num">&lt;$500</th>
-            <th class="num">$1k+</th>
-          </tr>
-        </thead>
+    <div class="month-panel" data-month="Marzo">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-style:italic;">Marzo 2026 · 1,426 agendas · 30% cualificados · 35% &lt;$500</p>
+      <table class="data-table">
+        <thead><tr><th>Fuente</th><th class="num">Agendas</th><th class="num">&lt;$500</th><th class="num">$500-1k</th><th class="num">$1k-3k</th><th class="num">&gt;$3k</th><th class="num">% Cualif</th></tr></thead>
         <tbody>
-          <tr><td class="name">Ad 2 (genérico)</td><td class="num">4.699</td><td class="num">558</td><td class="num">12%</td><td class="num">219</td><td class="num">39%</td><td class="num">45</td><td class="num">21%</td><td class="num">$72,7k</td><td class="num">$1.616</td><td class="num">40%</td><td class="num">29%</td></tr>
-          <tr><td class="name">VCP 3 Hook 1 (30-40)</td><td class="num">3.392</td><td class="num">471</td><td class="num">14%</td><td class="num">163</td><td class="num">35%</td><td class="num">36</td><td class="num">22%</td><td class="num">$55,0k</td><td class="num">$1.527</td><td class="num">41%</td><td class="num">27%</td></tr>
-          <tr class="row-good"><td class="name">Reel IA 1</td><td class="num">1.554</td><td class="num">195</td><td class="num">13%</td><td class="num">96</td><td class="num"><span class="cell-good">49%</span></td><td class="num">34</td><td class="num"><span class="cell-good">35%</span></td><td class="num">$50,6k</td><td class="num">$1.489</td><td class="num">34%</td><td class="num">34%</td></tr>
-          <tr><td class="name">FB TOFU Editado 1</td><td class="num">1.114</td><td class="num">198</td><td class="num">18%</td><td class="num">86</td><td class="num">43%</td><td class="num">21</td><td class="num">24%</td><td class="num">$38,8k</td><td class="num">$1.849</td><td class="num">35%</td><td class="num">37%</td></tr>
-          <tr><td class="name">Ad 8 - VCP 40 años</td><td class="num">1.017</td><td class="num">170</td><td class="num">17%</td><td class="num">68</td><td class="num">40%</td><td class="num">16</td><td class="num">24%</td><td class="num">$27,5k</td><td class="num">$1.719</td><td class="num">38%</td><td class="num">33%</td></tr>
-          <tr><td class="name">Ad 1 - Copia</td><td class="num">125</td><td class="num">103</td><td class="num">82%</td><td class="num">54</td><td class="num">52%</td><td class="num">15</td><td class="num">28%</td><td class="num">$24,1k</td><td class="num">$1.605</td><td class="num">39%</td><td class="num">32%</td></tr>
-          <tr class="row-good"><td class="name">Link in Bio</td><td class="num">104</td><td class="num">24</td><td class="num">23%</td><td class="num">13</td><td class="num">54%</td><td class="num">6</td><td class="num"><span class="cell-good">46%</span></td><td class="num">$17,1k</td><td class="num"><span class="cell-good">$2.844</span></td><td class="num">32%</td><td class="num">25%</td></tr>
-          <tr class="row-low"><td class="name">Reel Gladys 6</td><td class="num">4.235</td><td class="num">91</td><td class="num"><span class="cell-low">2%</span></td><td class="num">35</td><td class="num">38%</td><td class="num">14</td><td class="num">40%</td><td class="num">$16,3k</td><td class="num"><span class="cell-low">$1.167</span></td><td class="num"><span class="cell-low">49%</span></td><td class="num">24%</td></tr>
-          <tr class="row-good"><td class="name">Ad 5 - Compré tarjeta</td><td class="num">344</td><td class="num">58</td><td class="num">17%</td><td class="num">27</td><td class="num">47%</td><td class="num">7</td><td class="num">26%</td><td class="num">$15,1k</td><td class="num"><span class="cell-good">$2.158</span></td><td class="num">28%</td><td class="num"><span class="cell-good">41%</span></td></tr>
-          <tr class="row-good"><td class="name">Carrusel 1</td><td class="num">55</td><td class="num">43</td><td class="num">78%</td><td class="num">25</td><td class="num"><span class="cell-good">58%</span></td><td class="num">9</td><td class="num">36%</td><td class="num">$10,9k</td><td class="num">$1.213</td><td class="num"><span class="cell-good">18%</span></td><td class="num"><span class="cell-good">47%</span></td></tr>
-          <tr class="row-good"><td class="name">Ad 7 - Perdiste antes</td><td class="num">46</td><td class="num">9</td><td class="num">20%</td><td class="num">6</td><td class="num"><span class="cell-good">67%</span></td><td class="num">2</td><td class="num">33%</td><td class="num">$6,1k</td><td class="num"><span class="cell-good">$3.048</span></td><td class="num"><span class="cell-good">9%</span></td><td class="num"><span class="cell-good">64%</span></td></tr>
+          <tr><td class="name">ADS</td><td class="num">563</td><td class="num">36%</td><td class="num">33%</td><td class="num">18%</td><td class="num">12%</td><td class="num"><span>31%</span></td></tr>
+          <tr class="row-good"><td class="name">SETTING</td><td class="num">206</td><td class="num">23%</td><td class="num">40%</td><td class="num">26%</td><td class="num">11%</td><td class="num"="cell-good"><span class="cell-good">36%</span></td></tr>
+          <tr class="row-good"><td class="name">CONSULTORÍA 1A1</td><td class="num">225</td><td class="num">32%</td><td class="num">32%</td><td class="num">20%</td><td class="num">16%</td><td class="num"="cell-good"><span class="cell-good">36%</span></td></tr>
+          <tr><td class="name">YOUTUBE</td><td class="num">145</td><td class="num">38%</td><td class="num">31%</td><td class="num">25%</td><td class="num">7%</td><td class="num"><span>32%</span></td></tr>
+          <tr><td class="name">MORIS DIECK</td><td class="num">54</td><td class="num">37%</td><td class="num">37%</td><td class="num">22%</td><td class="num">4%</td><td class="num"><span>25%</span></td></tr>
+          <tr><td class="name">YOUTUBE LIVE</td><td class="num">52</td><td class="num">41%</td><td class="num">34%</td><td class="num">19%</td><td class="num">6%</td><td class="num"><span>25%</span></td></tr>
+          <tr class="row-watch"><td class="name">NAYO</td><td class="num">76</td><td class="num">49%</td><td class="num">38%</td><td class="num">10%</td><td class="num">3%</td><td class="num"><span>13%</span></td></tr>
+          <tr><td class="name">ANDRÉS GARZA</td><td class="num">56</td><td class="num">41%</td><td class="num">49%</td><td class="num">2%</td><td class="num">8%</td><td class="num"><span>10%</span></td></tr>
+          <tr><td class="name">JOSUÉ PEÑA</td><td class="num">14</td><td class="num">30%</td><td class="num">40%</td><td class="num">10%</td><td class="num">20%</td><td class="num"><span>30%</span></td></tr>
+          <tr><td class="name">RODNER</td><td class="num">27</td><td class="num">44%</td><td class="num">38%</td><td class="num">19%</td><td class="num">0%</td><td class="num"><span>19%</span></td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="month-panel" data-month="Abril">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-style:italic;">Abril 2026 · 1,434 agendas · 28% cualificados · 37% &lt;$500</p>
+      <table class="data-table">
+        <thead><tr><th>Fuente</th><th class="num">Agendas</th><th class="num">&lt;$500</th><th class="num">$500-1k</th><th class="num">$1k-3k</th><th class="num">&gt;$3k</th><th class="num">% Cualif</th></tr></thead>
+        <tbody>
+          <tr><td class="name">ADS</td><td class="num">488</td><td class="num">40%</td><td class="num">30%</td><td class="num">19%</td><td class="num">12%</td><td class="num"><span>30%</span></td></tr>
+          <tr class="row-good"><td class="name">SETTING</td><td class="num">222</td><td class="num">23%</td><td class="num">41%</td><td class="num">25%</td><td class="num">11%</td><td class="num"="cell-good"><span class="cell-good">37%</span></td></tr>
+          <tr><td class="name">CONSULTORÍA 1A1</td><td class="num">326</td><td class="num">37%</td><td class="num">34%</td><td class="num">19%</td><td class="num">10%</td><td class="num"><span>29%</span></td></tr>
+          <tr><td class="name">YOUTUBE LIVE</td><td class="num">63</td><td class="num">33%</td><td class="num">36%</td><td class="num">20%</td><td class="num">11%</td><td class="num"><span>31%</span></td></tr>
+          <tr><td class="name">YOUTUBE</td><td class="num">78</td><td class="num">33%</td><td class="num">45%</td><td class="num">17%</td><td class="num">5%</td><td class="num"><span>22%</span></td></tr>
+          <tr class="row-watch"><td class="name">NAYO</td><td class="num">148</td><td class="num">50%</td><td class="num">32%</td><td class="num">12%</td><td class="num">5%</td><td class="num"><span>18%</span></td></tr>
+          <tr><td class="name">MORIS DIECK</td><td class="num">37</td><td class="num">40%</td><td class="num">47%</td><td class="num">7%</td><td class="num">7%</td><td class="num"><span>13%</span></td></tr>
+          <tr><td class="name">ANDRÉS GARZA</td><td class="num">34</td><td class="num">43%</td><td class="num">39%</td><td class="num">13%</td><td class="num">4%</td><td class="num"><span>17%</span></td></tr>
+          <tr class="row-good"><td class="name">JOSUÉ PEÑA</td><td class="num">17</td><td class="num">15%</td><td class="num">46%</td><td class="num">31%</td><td class="num">8%</td><td class="num"="cell-good"><span class="cell-good">38%</span></td></tr>
+          <tr><td class="name">RODNER</td><td class="num">11</td><td class="num">33%</td><td class="num">67%</td><td class="num">0%</td><td class="num">0%</td><td class="num"><span>0%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="table-section">
+    <h3>Tendencia mes a mes — % cualificados ($1k+)</h3>
+    <div class="trend-table-wrap">
+      <div class="trend-header">
+        <div>Fuente</div>
+        <div class="t-bars-h"><div>Ene</div><div>Feb</div><div>Mar</div><div>Abr</div></div>
+        <div style="text-align:center;">Trend</div>
       </div>
-      <p class="note-mini">Filas verdes: anuncios con cualificación o conversión por encima del promedio. Fila roja: ratio Optin → Agenda significativamente bajo.</p>
+      <div class="trend-row">
+        <div class="t-name">SETTING</div>
+        <div class="t-bars"><div class="t-bar bar-mid">30%</div><div class="t-bar bar-good">36%</div><div class="t-bar bar-good">36%</div><div class="t-bar bar-good">37%</div></div>
+        <div class="t-trend up">↑</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">JOSUÉ PEÑA</div>
+        <div class="t-bars"><div class="t-bar bar-good">44%</div><div class="t-bar bar-good">35%</div><div class="t-bar bar-mid">30%</div><div class="t-bar bar-good">38%</div></div>
+        <div class="t-trend stable">≈</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">CONSULTORÍA 1A1</div>
+        <div class="t-bars"><div class="t-bar bar-mid">32%</div><div class="t-bar bar-mid">26%</div><div class="t-bar bar-good">36%</div><div class="t-bar bar-mid">29%</div></div>
+        <div class="t-trend flat">~</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">ADS</div>
+        <div class="t-bars"><div class="t-bar bar-good">35%</div><div class="t-bar bar-mid">33%</div><div class="t-bar bar-mid">31%</div><div class="t-bar bar-mid">30%</div></div>
+        <div class="t-trend down">↓</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">YOUTUBE LIVE</div>
+        <div class="t-bars"><div class="t-bar bar-good">35%</div><div class="t-bar bar-mid">29%</div><div class="t-bar bar-mid">25%</div><div class="t-bar bar-mid">31%</div></div>
+        <div class="t-trend flat">~</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">YOUTUBE</div>
+        <div class="t-bars"><div class="t-bar bar-mid">31%</div><div class="t-bar bar-mid">32%</div><div class="t-bar bar-mid">32%</div><div class="t-bar bar-low">22%</div></div>
+        <div class="t-trend down">↓</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">NAYO</div>
+        <div class="t-bars"><div class="t-bar bar-mid">31%</div><div class="t-bar bar-mid">28%</div><div class="t-bar bar-low">13%</div><div class="t-bar bar-low">18%</div></div>
+        <div class="t-trend down-strong">↓↓</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">ANDRÉS GARZA</div>
+        <div class="t-bars"><div class="t-bar bar-mid">26%</div><div class="t-bar bar-low">20%</div><div class="t-bar bar-low">10%</div><div class="t-bar bar-low">17%</div></div>
+        <div class="t-trend down-strong">↓↓</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">MORIS DIECK</div>
+        <div class="t-bars"><div class="t-bar bar-na">—</div><div class="t-bar bar-na">—</div><div class="t-bar bar-mid">25%</div><div class="t-bar bar-low">13%</div></div>
+        <div class="t-trend down">↓</div>
+      </div>
+      <div class="trend-row">
+        <div class="t-name">RODNER</div>
+        <div class="t-bars"><div class="t-bar bar-good">58%</div><div class="t-bar bar-mid">31%</div><div class="t-bar bar-low">19%</div><div class="t-bar bar-low">0%</div></div>
+        <div class="t-trend down-strong">↓↓</div>
+      </div>
     </div>
-
-    <div class="section-end">
-      Los anuncios de mayor volumen (Ad 2, VCP 3 Hook 1, Reel Gladys 6) concentran ~73% de los optins totales con % de leads &lt;$500 entre 40-49%. Los anuncios con mejor cualificación (Ad 7, Carrusel 1, Ad 5) tienen volúmenes bajos pero ticket medio entre $1.213 y $3.048 y % cualificados entre 41-64%.
-    </div>
+    <p class="note-mini">Las barras se colorean por valor: verde (≥35% cualificados), naranja claro (25-34%), beige (&lt;25%), gris (sin dato).</p>
   </div>
 
-  <div class="closing">
-    <div class="c-tag">Para qué sirve este análisis</div>
-    <h3>Visibilidad para la toma de decisiones</h3>
-    <p>Este documento describe el comportamiento del lead por fuente y por anuncio. <strong>No emite recomendaciones operativas</strong> sobre presupuesto o priorización.</p>
-    <p>Cualquier decisión debería cruzarse con información que este análisis no cubre: histórico de inversión por anuncio, contexto creativo de cada campaña y atribución multitouch en fuentes orgánicas.</p>
+  <div class="section-end">
+    Setting es la única fuente con tendencia decreciente clara en % de leads sin capacidad y la única que sube en % cualificados a lo largo de los 4 meses (30% → 37%). Nayo y ADS muestran tendencia descendente. YouTube cae en Abril después de 3 meses estables. Josué Peña mantiene el mejor promedio de cualificación entre los podcasts (37%).
   </div>
+</div>
+
+<div class="section-block">
+  <div class="section-header">
+    <span class="num">02</span>
+    <h2>Análisis por anuncio (ADS)</h2>
+  </div>
+  <p class="section-sub">~17.400 optins en 4 meses repartidos en 23 anuncios · Atribución directa por anuncio · Cada bloque muestra el embudo Optin → Agenda → Showed → Compró cruzado por capital del lead.</p>
+
+  <div class="defs">
+    <div class="d"><div class="d-tag">Optin</div><div class="d-text">Dejó email en el formulario</div></div>
+    <div class="d"><div class="d-tag">Agenda</div><div class="d-text">Agendó al menos una cita</div></div>
+    <div class="d"><div class="d-tag">Showed</div><div class="d-text">Se presentó a la llamada</div></div>
+    <div class="d"><div class="d-tag">Compró</div><div class="d-text">Cerró venta</div></div>
+  </div>
+
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 2</div>
+        <div style="margin-top:6px;"><span class="ad-tag high-vol">Alto volumen</span></div>
+      </div>
+      <div class="ad-meta"><strong>4,699</strong> optins · <strong>489</strong> agendas · <strong>$69,834</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">10%</div>
+        <div class="q-detail">489 de 4,699</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val ">27%</div>
+        <div class="q-detail">44 ventas / 165 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val amber">29%</div>
+        <div class="q-detail">40% &lt;$500 · sobre 682 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,587</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">273</td><td class="num">188</td><td class="num">49</td><td class="num">9</td><td class="num">18.4%</td><td class="num">$7,545</td><td class="num">$838</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">209</td><td class="num">151</td><td class="num">54</td><td class="num">15</td><td class="num">27.8%</td><td class="num">$23,172</td><td class="num">$1,545</td></tr>
+            <tr><td class="name">$1k-3k</td><td class="num">120</td><td class="num">89</td><td class="num">35</td><td class="num">11</td><td class="num">31.4%</td><td class="num">$16,170</td><td class="num">$1,470</td></tr>
+            <tr><td class="name">>$3k</td><td class="num">80</td><td class="num">61</td><td class="num">27</td><td class="num">9</td><td class="num">33.3%</td><td class="num">$22,947</td><td class="num">$2,550</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">4,017</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$2,899</td><td class="num">$2,899</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">87</td><td class="num">23</td><td class="num">3</td><td class="num">13.0%</td><td class="num">$2,391</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">56</td><td class="num">14</td><td class="num">2</td><td class="num">14.3%</td><td class="num">$1,594</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">36</td><td class="num">11</td><td class="num">3</td><td class="num">27.3%</td><td class="num">$2,391</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">9</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$1,169</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">71</td><td class="num">25</td><td class="num">6</td><td class="num">24.0%</td><td class="num">$8,986</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">44</td><td class="num">16</td><td class="num">5</td><td class="num">31.2%</td><td class="num">$7,121</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">23</td><td class="num">8</td><td class="num">4</td><td class="num">50.0%</td><td class="num">$7,065</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">15</td><td class="num">5</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">42</td><td class="num">15</td><td class="num">3</td><td class="num">20.0%</td><td class="num">$6,595</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">29</td><td class="num">12</td><td class="num">5</td><td class="num">41.7%</td><td class="num">$5,879</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">12</td><td class="num">4</td><td class="num">2</td><td class="num">50.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">6</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">29</td><td class="num">12</td><td class="num">4</td><td class="num">33.3%</td><td class="num">$9,964</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">14</td><td class="num">7</td><td class="num">2</td><td class="num">28.6%</td><td class="num">$8,195</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">15</td><td class="num">5</td><td class="num">1</td><td class="num">20.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">4</td><td class="num">3</td><td class="num">2</td><td class="num">66.7%</td><td class="num">$1,889</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">REEL GLADYS 6</div>
+        <div style="margin-top:6px;"><span class="ad-tag high-vol">Alto volumen</span><span class="ad-tag warn">Cualificación baja</span><span class="ad-tag alert">Conv. Optin→AG baja</span></div>
+      </div>
+      <div class="ad-meta"><strong>4,235</strong> optins · <strong>67</strong> agendas · <strong>$16,343</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">2%</div>
+        <div class="q-detail">67 de 4,235</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">70%</div>
+        <div class="q-detail">14 ventas / 20 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val red">24%</div>
+        <div class="q-detail">49% &lt;$500 · sobre 445 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,167</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">220</td><td class="num">25</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td class="num">$470</td><td class="num">$470</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">116</td><td class="num">23</td><td class="num">9</td><td class="num">10</td><td class="num">111.1%</td><td class="num">$10,690</td><td class="num">$1,069</td></tr>
+            <tr><td class="name">$1k-3k</td><td class="num">80</td><td class="num">14</td><td class="num">5</td><td class="num">1</td><td class="num">20.0%</td><td class="num">$2,048</td><td class="num">$2,048</td></tr>
+            <tr><td class="name">>$3k</td><td class="num">29</td><td class="num">5</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$3,135</td><td class="num">$1,568</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">3,790</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">9</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$470</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">7</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">7</td><td class="num">2</td><td class="num">3</td><td class="num">150.0%</td><td class="num">$4,636</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">10</td><td class="num">3</td><td class="num">3</td><td class="num">100.0%</td><td class="num">$2,064</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">5</td><td class="num">4</td><td class="num">4</td><td class="num">100.0%</td><td class="num">$3,990</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">4</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$2,048</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,338</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">VCP 3 HOOK 1</div>
+        <div style="margin-top:6px;"><span class="ad-tag high-vol">Alto volumen</span></div>
+      </div>
+      <div class="ad-meta"><strong>3,314</strong> optins · <strong>362</strong> agendas · <strong>$38,674</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">11%</div>
+        <div class="q-detail">362 de 3,314</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val ">24%</div>
+        <div class="q-detail">26 ventas / 107 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val amber">26%</div>
+        <div class="q-detail">41% &lt;$500 · sobre 509 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,487</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">210</td><td class="num">144</td><td class="num">25</td><td class="num">4</td><td class="num">16.0%</td><td class="num">$2,766</td><td class="num">$691</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">167</td><td class="num">118</td><td class="num">41</td><td class="num">9</td><td class="num">22.0%</td><td class="num">$11,349</td><td class="num">$1,261</td></tr>
+            <tr><td class="name">$1k-3k</td><td class="num">82</td><td class="num">59</td><td class="num">26</td><td class="num">11</td><td class="num">42.3%</td><td class="num">$18,761</td><td class="num">$1,706</td></tr>
+            <tr><td class="name">>$3k</td><td class="num">50</td><td class="num">41</td><td class="num">15</td><td class="num">2</td><td class="num">13.3%</td><td class="num">$5,798</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">2,805</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$4,997</td><td class="num">$4,997</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">49</td><td class="num">11</td><td class="num">1</td><td class="num">9.1%</td><td class="num">$797</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">24</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td class="num">$80</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">29</td><td class="num">5</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">42</td><td class="num">5</td><td class="num">2</td><td class="num">40.0%</td><td class="num">$1,889</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">42</td><td class="num">17</td><td class="num">5</td><td class="num">29.4%</td><td class="num">$6,087</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">25</td><td class="num">7</td><td class="num">1</td><td class="num">14.3%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">31</td><td class="num">11</td><td class="num">3</td><td class="num">27.3%</td><td class="num">$4,465</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">22</td><td class="num">6</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">23</td><td class="num">13</td><td class="num">5</td><td class="num">38.5%</td><td class="num">$8,181</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">18</td><td class="num">9</td><td class="num">2</td><td class="num">22.2%</td><td class="num">$5,798</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">6</td><td class="num">1</td><td class="num">2</td><td class="num">200.0%</td><td class="num">$3,696</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">12</td><td class="num">3</td><td class="num">2</td><td class="num">66.7%</td><td class="num">$1,086</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">17</td><td class="num">6</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">5</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">15</td><td class="num">6</td><td class="num">2</td><td class="num">33.3%</td><td class="num">$5,798</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">REEL IA 1</div>
+        <div style="margin-top:6px;"><span class="ad-tag high-vol">Alto volumen</span></div>
+      </div>
+      <div class="ad-meta"><strong>1,554</strong> optins · <strong>157</strong> agendas · <strong>$48,929</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">10%</div>
+        <div class="q-detail">157 de 1,554</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">55%</div>
+        <div class="q-detail">33 ventas / 60 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val ">34%</div>
+        <div class="q-detail">34% &lt;$500 · sobre 287 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,483</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">98</td><td class="num">55</td><td class="num">12</td><td class="num">8</td><td class="num">66.7%</td><td class="num">$10,253</td><td class="num">$1,282</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">92</td><td class="num">50</td><td class="num">18</td><td class="num">8</td><td class="num">44.4%</td><td class="num">$11,763</td><td class="num">$1,470</td></tr>
+            <tr><td class="name">$1k-3k</td><td class="num">59</td><td class="num">29</td><td class="num">17</td><td class="num">13</td><td class="num">76.5%</td><td class="num">$21,623</td><td class="num">$1,663</td></tr>
+            <tr><td class="name">>$3k</td><td class="num">38</td><td class="num">23</td><td class="num">13</td><td class="num">4</td><td class="num">30.8%</td><td class="num">$5,290</td><td class="num">$1,322</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">1,267</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$1,689</td><td class="num">$1,689</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">30</td><td class="num">9</td><td class="num">6</td><td class="num">66.7%</td><td class="num">$6,557</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">10</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">10</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$3,696</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">32</td><td class="num">11</td><td class="num">4</td><td class="num">36.4%</td><td class="num">$6,098</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">7</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$1,597</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">5</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">6</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$1,169</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">16</td><td class="num">11</td><td class="num">6</td><td class="num">54.5%</td><td class="num">$9,281</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">10</td><td class="num">5</td><td class="num">7</td><td class="num">140.0%</td><td class="num">$12,342</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">9</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">4</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">7</td><td class="num">6</td><td class="num">1</td><td class="num">16.7%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">3</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$2,899</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">FB TOFU EDITADO 1</div>
+        <div style="margin-top:6px;"><span class="ad-tag high-vol">Alto volumen</span></div>
+      </div>
+      <div class="ad-meta"><strong>1,114</strong> optins · <strong>197</strong> agendas · <strong>$38,833</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">18%</div>
+        <div class="q-detail">197 de 1,114</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val ">26%</div>
+        <div class="q-detail">21 ventas / 80 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val ">37%</div>
+        <div class="q-detail">35% &lt;$500 · sobre 375 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,849</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">131</td><td class="num">68</td><td class="num">17</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">107</td><td class="num">58</td><td class="num">23</td><td class="num">6</td><td class="num">26.1%</td><td class="num">$10,757</td><td class="num">$1,793</td></tr>
+            <tr><td class="name">$1k-3k</td><td class="num">86</td><td class="num">45</td><td class="num">26</td><td class="num">8</td><td class="num">30.8%</td><td class="num">$12,332</td><td class="num">$1,542</td></tr>
+            <tr><td class="name">>$3k</td><td class="num">51</td><td class="num">26</td><td class="num">14</td><td class="num">7</td><td class="num">50.0%</td><td class="num">$15,744</td><td class="num">$2,249</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">739</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">26</td><td class="num">8</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">16</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">15</td><td class="num">4</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">12</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">22</td><td class="num">8</td><td class="num">3</td><td class="num">37.5%</td><td class="num">$4,166</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">5</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">23</td><td class="num">10</td><td class="num">2</td><td class="num">20.0%</td><td class="num">$5,794</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">8</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">25</td><td class="num">16</td><td class="num">6</td><td class="num">37.5%</td><td class="num">$11,060</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">4</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">13</td><td class="num">8</td><td class="num">1</td><td class="num">12.5%</td><td class="num">$475</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">14</td><td class="num">5</td><td class="num">3</td><td class="num">60.0%</td><td class="num">$6,967</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">3</td><td class="num">1</td><td class="num">2</td><td class="num">200.0%</td><td class="num">$5,798</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">6</td><td class="num">4</td><td class="num">2</td><td class="num">50.0%</td><td class="num">$2,979</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">4</td><td class="num">4</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 8 VCP 40 ANOS</div>
+        <div style="margin-top:6px;"><span class="ad-tag high-vol">Alto volumen</span></div>
+      </div>
+      <div class="ad-meta"><strong>1,017</strong> optins · <strong>133</strong> agendas · <strong>$27,504</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">13%</div>
+        <div class="q-detail">133 de 1,017</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">34%</div>
+        <div class="q-detail">16 ventas / 47 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val ">33%</div>
+        <div class="q-detail">38% &lt;$500 · sobre 203 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,719</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">78</td><td class="num">51</td><td class="num">13</td><td class="num">3</td><td class="num">23.1%</td><td class="num">$2,391</td><td class="num">$797</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">58</td><td class="num">39</td><td class="num">10</td><td class="num">3</td><td class="num">30.0%</td><td class="num">$4,493</td><td class="num">$1,498</td></tr>
+            <tr><td class="name">$1k-3k</td><td class="num">48</td><td class="num">30</td><td class="num">18</td><td class="num">5</td><td class="num">27.8%</td><td class="num">$4,128</td><td class="num">$826</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">19</td><td class="num">13</td><td class="num">6</td><td class="num">5</td><td class="num">83.3%</td><td class="num">$16,492</td><td class="num">$3,298</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">814</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">18</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">10</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$1,594</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">20</td><td class="num">6</td><td class="num">1</td><td class="num">16.7%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">13</td><td class="num">4</td><td class="num">3</td><td class="num">75.0%</td><td class="num">$4,493</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">11</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">15</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">11</td><td class="num">8</td><td class="num">2</td><td class="num">25.0%</td><td class="num">$1,737</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">9</td><td class="num">7</td><td class="num">2</td><td class="num">28.6%</td><td class="num">$1,594</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">8</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">6</td><td class="num">3</td><td class="num">4</td><td class="num">133.3%</td><td class="num">$14,893</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">5</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$1,599</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 5 COMPRE TARJETA</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>344</strong> optins · <strong>48</strong> agendas · <strong>$15,103</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">14%</div>
+        <div class="q-detail">48 de 344</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">33%</div>
+        <div class="q-detail">7 ventas / 21 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">41%</div>
+        <div class="q-detail">28% &lt;$500 · sobre 69 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$2,158</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">19</td><td class="num">12</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">22</td><td class="num">18</td><td class="num">11</td><td class="num">3</td><td class="num">27.3%</td><td class="num">$5,237</td><td class="num">$1,746</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">17</td><td class="num">11</td><td class="num">6</td><td class="num">4</td><td class="num">66.7%</td><td class="num">$9,866</td><td class="num">$2,466</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">11</td><td class="num">7</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">275</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">4</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">5</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">11</td><td class="num">4</td><td class="num">2</td><td class="num">50.0%</td><td class="num">$2,338</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">5</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">1</td><td class="num">1</td><td class="num">2</td><td class="num">200.0%</td><td class="num">$4,068</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 2 SI LLEGARA USA</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>189</strong> optins · <strong>21</strong> agendas · <strong>$4,309</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">11%</div>
+        <div class="q-detail">21 de 189</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">33%</div>
+        <div class="q-detail">3 ventas / 9 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val ">33%</div>
+        <div class="q-detail">37% &lt;$500 · sobre 43 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,436</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">16</td><td class="num">6</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">13</td><td class="num">6</td><td class="num">4</td><td class="num">3</td><td class="num">75.0%</td><td class="num">$4,309</td><td class="num">$1,436</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">12</td><td class="num">7</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">146</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">4</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$940</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$470</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">7</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">IMG_7851</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>148</strong> optins · <strong>45</strong> agendas · <strong>$11,505</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">30%</div>
+        <div class="q-detail">45 de 148</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">38%</div>
+        <div class="q-detail">6 ventas / 16 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">41%</div>
+        <div class="q-detail">33% &lt;$500 · sobre 82 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,918</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">27</td><td class="num">17</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">21</td><td class="num">10</td><td class="num">4</td><td class="num">4</td><td class="num">100.0%</td><td class="num">$8,136</td><td class="num">$2,034</td></tr>
+            <tr><td class="name">$1k-3k</td><td class="num">21</td><td class="num">11</td><td class="num">6</td><td class="num">1</td><td class="num">16.7%</td><td class="num">$470</td><td class="num">$470</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">13</td><td class="num">7</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$2,899</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">66</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">7</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">5</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$1,169</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$1,169</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$5,798</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">4</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$470</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 1 COPIA</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>125</strong> optins · <strong>103</strong> agendas · <strong>$24,078</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">82%</div>
+        <div class="q-detail">103 de 125</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">31%</div>
+        <div class="q-detail">15 ventas / 48 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val ">32%</div>
+        <div class="q-detail">39% &lt;$500 · sobre 116 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,605</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">45</td><td class="num">41</td><td class="num">12</td><td class="num">1</td><td class="num">8.3%</td><td class="num">$940</td><td class="num">$940</td></tr>
+            <tr><td class="name">$500-1k</td><td class="num">34</td><td class="num">30</td><td class="num">12</td><td class="num">6</td><td class="num">50.0%</td><td class="num">$11,088</td><td class="num">$1,848</td></tr>
+            <tr><td class="name">$1k-3k</td><td class="num">24</td><td class="num">19</td><td class="num">14</td><td class="num">4</td><td class="num">28.6%</td><td class="num">$3,273</td><td class="num">$818</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">13</td><td class="num">13</td><td class="num">10</td><td class="num">4</td><td class="num">40.0%</td><td class="num">$8,777</td><td class="num">$2,194</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">4</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$940</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">4</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">20</td><td class="num">6</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">13</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">18</td><td class="num">9</td><td class="num">3</td><td class="num">33.3%</td><td class="num">$4,493</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">8</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">7</td><td class="num">5</td><td class="num">3</td><td class="num">60.0%</td><td class="num">$3,193</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">7</td><td class="num">6</td><td class="num">1</td><td class="num">16.7%</td><td class="num">$80</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">8</td><td class="num">6</td><td class="num">3</td><td class="num">50.0%</td><td class="num">$5,878</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$2,899</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">LINK IN BIO</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>104</strong> optins · <strong>16</strong> agendas · <strong>$17,063</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">15%</div>
+        <div class="q-detail">16 de 104</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">100%</div>
+        <div class="q-detail">6 ventas / 6 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val ">25%</div>
+        <div class="q-detail">32% &lt;$500 · sobre 40 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$2,844</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">13</td><td class="num">7</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">17</td><td class="num">7</td><td class="num">5</td><td class="num">4</td><td class="num">80.0%</td><td class="num">$11,265</td><td class="num">$2,816</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">7</td><td class="num">2</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$2,899</td><td class="num">$2,899</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$2,899</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">64</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">5</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">2</td><td class="num">1</td><td class="num">4</td><td class="num">400.0%</td><td class="num">$11,265</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">2</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$2,899</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">IMG_7849</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>103</strong> optins · <strong>17</strong> agendas · <strong>$5,798</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">17%</div>
+        <div class="q-detail">17 de 103</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">33%</div>
+        <div class="q-detail">2 ventas / 6 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">41%</div>
+        <div class="q-detail">31% &lt;$500 · sobre 32 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$2,899</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">10</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">9</td><td class="num">5</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">9</td><td class="num">5</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$2,899</td><td class="num">$2,899</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">4</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$2,899</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">71</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 1 TRABAJO 10HRS</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>81</strong> optins · <strong>16</strong> agendas · <strong>$1,594</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">20%</div>
+        <div class="q-detail">16 de 81</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">33%</div>
+        <div class="q-detail">2 ventas / 6 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val ">20%</div>
+        <div class="q-detail">25% &lt;$500 · sobre 20 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$797</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">5</td><td class="num">4</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$797</td><td class="num">$797</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">11</td><td class="num">8</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td class="num">$797</td><td class="num">$797</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">2</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">61</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">4</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">5</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">VCP 3 HOOK 1 (COPIA)</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>78</strong> optins · <strong>49</strong> agendas · <strong>$11,317</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">63%</div>
+        <div class="q-detail">49 de 78</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">43%</div>
+        <div class="q-detail">9 ventas / 21 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val ">34%</div>
+        <div class="q-detail">36% &lt;$500 · sobre 59 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,257</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">21</td><td class="num">15</td><td class="num">5</td><td class="num">1</td><td class="num">20.0%</td><td class="num">$797</td><td class="num">$797</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">18</td><td class="num">15</td><td class="num">7</td><td class="num">4</td><td class="num">57.1%</td><td class="num">$5,233</td><td class="num">$1,308</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">13</td><td class="num">12</td><td class="num">5</td><td class="num">1</td><td class="num">20.0%</td><td class="num">$290</td><td class="num">$290</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">7</td><td class="num">7</td><td class="num">4</td><td class="num">3</td><td class="num">75.0%</td><td class="num">$4,997</td><td class="num">$1,666</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">19</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">10</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">4</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$3,696</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">8</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$290</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">6</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">2</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$2,098</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">PIZARRA</div>
+        <div style="margin-top:6px;"></div>
+      </div>
+      <div class="ad-meta"><strong>70</strong> optins · <strong>53</strong> agendas · <strong>$5,259</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">76%</div>
+        <div class="q-detail">53 de 70</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val amber">17%</div>
+        <div class="q-detail">4 ventas / 23 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val amber">33%</div>
+        <div class="q-detail">41% &lt;$500 · sobre 61 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,315</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td class="num">25</td><td class="num">20</td><td class="num">6</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">16</td><td class="num">15</td><td class="num">5</td><td class="num">3</td><td class="num">60.0%</td><td class="num">$2,311</td><td class="num">$770</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">9</td><td class="num">9</td><td class="num">6</td><td class="num">1</td><td class="num">16.7%</td><td class="num">$2,948</td><td class="num">$2,948</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">11</td><td class="num">9</td><td class="num">6</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">4</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">5</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">8</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$717</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">5</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">7</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">4</td><td class="num">4</td><td class="num">1</td><td class="num">25.0%</td><td class="num">$2,948</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">5</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 7 PERDISTE ANTES</div>
+        <div style="margin-top:6px;"><span class="ad-tag small">Muestra pequeña</span><span class="ad-tag qual">Alta cualificación</span></div>
+      </div>
+      <div class="ad-meta"><strong>46</strong> optins · <strong>8</strong> agendas · <strong>$6,097</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">17%</div>
+        <div class="q-detail">8 de 46</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">40%</div>
+        <div class="q-detail">2 ventas / 5 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">64%</div>
+        <div class="q-detail">9% &lt;$500 · sobre 11 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$3,048</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">6</td><td class="num">4</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$3,198</td><td class="num">$3,198</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">Sin respuesta</td><td class="num">35</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">CARRUSEL 1 COPIA</div>
+        <div style="margin-top:6px;"><span class="ad-tag small">Muestra pequeña</span></div>
+      </div>
+      <div class="ad-meta"><strong>40</strong> optins · <strong>33</strong> agendas · <strong>$9,828</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">82%</div>
+        <div class="q-detail">33 de 40</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">39%</div>
+        <div class="q-detail">7 ventas / 18 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">46%</div>
+        <div class="q-detail">17% &lt;$500 · sobre 35 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,404</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">6</td><td class="num">6</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$1,267</td><td class="num">$634</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">13</td><td class="num">11</td><td class="num">5</td><td class="num">1</td><td class="num">20.0%</td><td class="num">$797</td><td class="num">$797</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">13</td><td class="num">13</td><td class="num">8</td><td class="num">4</td><td class="num">50.0%</td><td class="num">$7,764</td><td class="num">$1,941</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$470</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">4</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">7</td><td class="num">5</td><td class="num">2</td><td class="num">40.0%</td><td class="num">$4,068</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 1</div>
+        <div style="margin-top:6px;"><span class="ad-tag small">Muestra pequeña</span></div>
+      </div>
+      <div class="ad-meta"><strong>33</strong> optins · <strong>28</strong> agendas · <strong>$7,996</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">85%</div>
+        <div class="q-detail">28 de 33</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val ">20%</div>
+        <div class="q-detail">3 ventas / 15 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">42%</div>
+        <div class="q-detail">29% &lt;$500 · sobre 31 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$2,665</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">9</td><td class="num">7</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">9</td><td class="num">9</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">6</td><td class="num">5</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$4,997</td><td class="num">$4,997</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">7</td><td class="num">7</td><td class="num">7</td><td class="num">2</td><td class="num">28.6%</td><td class="num">$2,999</td><td class="num">$1,500</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">5</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$4,997</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td class="num">33.3%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">>$3k</td><td>Febrero</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$100</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">>$3k</td><td>Abril</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">CARRUSEL 2</div>
+        <div style="margin-top:6px;"><span class="ad-tag small">Muestra pequeña</span><span class="ad-tag warn">Cualificación baja</span></div>
+      </div>
+      <div class="ad-meta"><strong>22</strong> optins · <strong>19</strong> agendas · <strong>$3,696</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">86%</div>
+        <div class="q-detail">19 de 22</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val ">20%</div>
+        <div class="q-detail">2 ventas / 10 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val red">20%</div>
+        <div class="q-detail">45% &lt;$500 · sobre 20 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$1,848</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">9</td><td class="num">9</td><td class="num">5</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">7</td><td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">3</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num">100.0%</td><td class="num">$3,696</td><td class="num">$1,848</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Abril</td><td class="num">6</td><td class="num">3</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Marzo</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Abril</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$2,899</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Marzo</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Marzo</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 3 PERDER 5K</div>
+        <div style="margin-top:6px;"><span class="ad-tag small">Muestra pequeña</span></div>
+      </div>
+      <div class="ad-meta"><strong>21</strong> optins · <strong>2</strong> agendas · <strong>—</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">10%</div>
+        <div class="q-detail">2 de 21</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val ">0%</div>
+        <div class="q-detail">0 ventas / 1 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">50%</div>
+        <div class="q-detail">0% &lt;$500 · sobre 2 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$0</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">19</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">AD 6 NO ENTRES</div>
+        <div style="margin-top:6px;"><span class="ad-tag small">Muestra pequeña</span><span class="ad-tag warn">Cualificación baja</span></div>
+      </div>
+      <div class="ad-meta"><strong>15</strong> optins · <strong>5</strong> agendas · <strong>—</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">33%</div>
+        <div class="q-detail">5 de 15</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val ">0%</div>
+        <div class="q-detail">0 ventas / 3 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val red">0%</div>
+        <div class="q-detail">50% &lt;$500 · sobre 6 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$0</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">3</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">3</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">CARRUSEL 1</div>
+        <div style="margin-top:6px;"><span class="ad-tag small">Muestra pequeña</span></div>
+      </div>
+      <div class="ad-meta"><strong>15</strong> optins · <strong>10</strong> agendas · <strong>$1,087</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">67%</div>
+        <div class="q-detail">10 de 15</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val green">33%</div>
+        <div class="q-detail">2 ventas / 6 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">50%</div>
+        <div class="q-detail">21% &lt;$500 · sobre 14 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$544</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$500-1k</td><td class="num">4</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">5</td><td class="num">3</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$797</td><td class="num">$797</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">>$3k</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$290</td><td class="num">$290</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name"><$500</td><td>Enero</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name"><$500</td><td>Marzo</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Enero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$500-1k</td><td>Febrero</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Enero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+            <tr><td class="name">$1k-3k</td><td>Abril</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">50.0%</td><td class="num">$797</td></tr>
+            <tr><td class="name">>$3k</td><td>Enero</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">100.0%</td><td class="num">$290</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="ad-block">
+    <div class="ad-header">
+      <div>
+        <div class="ad-name">REEL IA 2</div>
+        <div style="margin-top:6px;"><span class="ad-tag small">Muestra pequeña</span><span class="ad-tag warn">Cualificación baja</span></div>
+      </div>
+      <div class="ad-meta"><strong>14</strong> optins · <strong>1</strong> agendas · <strong>—</strong> CC</div>
+    </div>
+
+    <div class="ad-quick">
+      <div class="q">
+        <div class="q-lbl">Optin → Agenda</div>
+        <div class="q-val">7%</div>
+        <div class="q-detail">1 de 14</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Showed → Compró</div>
+        <div class="q-val ">0%</div>
+        <div class="q-detail">0 ventas / 0 showed</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">% Cualificados ($1k+)</div>
+        <div class="q-val green">50%</div>
+        <div class="q-detail">50% &lt;$500 · sobre 2 resp.</div>
+      </div>
+      <div class="q">
+        <div class="q-lbl">Ticket medio</div>
+        <div class="q-val">$0</div>
+        <div class="q-detail">por venta cerrada</div>
+      </div>
+    </div>
+
+    <div class="ad-body">
+      <button class="ad-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Ver desglose por capital y mes</button>
+      <div class="ad-detail">
+        <h5>Por capital del lead</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th class="num">Optins</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv Sh→Vt</th><th class="num">CC</th><th class="num">Ticket</th></tr></thead>
+          <tbody>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name"><$500</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">$1k-3k</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+            <tr style="opacity:0.6;font-style:italic;"><td class="name">Sin respuesta</td><td class="num">12</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+        <h5>Por capital y mes (solo filas con actividad)</h5>
+        <table class="data-table">
+          <thead><tr><th>Capital</th><th>Mes</th><th class="num">Agendas</th><th class="num">Showed</th><th class="num">Ventas</th><th class="num">% Conv</th><th class="num">CC</th></tr></thead>
+          <tbody>
+            <tr><td class="name">$1k-3k</td><td>Febrero</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0.0%</td><td class="num">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="section-end">
+    Los anuncios de mayor volumen (Ad 2, Reel Gladys 6, VCP 3 Hook 1) concentran la mayoría de optins pero la conversión optin→agenda en Reel Gladys 6 es significativamente más baja que en los otros dos. Los anuncios con mejor cualificación financiera del lead (Ad 7 Perdiste antes, Carrusel 1, Ad 5 Compré tarjeta) tienen volúmenes bajos pero ratios de cualificados $1k+ entre 41 y 64%.
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="section-header">
+    <span class="num">03</span>
+    <h2>Tendencia mensual por anuncio</h2>
+  </div>
+  <p class="section-sub">Evolución mes a mes de los anuncios con 100+ optins. Agendas por mes y cash collected generado.</p>
+
+  <div class="trend-table-wrap">
+    <div class="trend-header">
+      <div>Anuncio</div>
+      <div class="t-bars-h"><div>Ene</div><div>Feb</div><div>Mar</div><div>Abr</div></div>
+      <div style="text-align:center;">Optins</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">AD 2</div>
+      <div class="t-bars"><div class="t-bar bar-good">229</div><div class="t-bar bar-mid">143</div><div class="t-bar bar-mid">86</div><div class="t-bar bar-low">34</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">4,699</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">REEL GLADYS 6</div>
+      <div class="t-bars"><div class="t-bar bar-good">22</div><div class="t-bar bar-good">24</div><div class="t-bar bar-mid">12</div><div class="t-bar bar-mid">9</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">4,235</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">VCP 3 HOOK 1</div>
+      <div class="t-bars"><div class="t-bar bar-good">131</div><div class="t-bar bar-mid">72</div><div class="t-bar bar-mid">71</div><div class="t-bar bar-good">91</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">3,314</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">REEL IA 1</div>
+      <div class="t-bars"><div class="t-bar bar-good">87</div><div class="t-bar bar-mid">31</div><div class="t-bar bar-low">18</div><div class="t-bar bar-low">21</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">1,554</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">FB TOFU EDITADO 1</div>
+      <div class="t-bars"><div class="t-bar bar-good">87</div><div class="t-bar bar-low">28</div><div class="t-bar bar-mid">57</div><div class="t-bar bar-low">27</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">1,114</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">AD 8 VCP 40 ANOS</div>
+      <div class="t-bars"><div class="t-bar bar-low">9</div><div class="t-bar bar-good">48</div><div class="t-bar bar-mid">31</div><div class="t-bar bar-good">48</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">1,017</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">AD 5 COMPRE TARJETA</div>
+      <div class="t-bars"><div class="t-bar bar-mid">11</div><div class="t-bar bar-mid">10</div><div class="t-bar bar-good">24</div><div class="t-bar bar-low">3</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">344</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">AD 2 SI LLEGARA USA</div>
+      <div class="t-bars"><div class="t-bar bar-low">3</div><div class="t-bar bar-low">1</div><div class="t-bar bar-good">15</div><div class="t-bar bar-low">3</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">189</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">IMG_7851</div>
+      <div class="t-bars"><div class="t-bar bar-good">15</div><div class="t-bar bar-mid">5</div><div class="t-bar bar-good">12</div><div class="t-bar bar-good">13</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">148</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">AD 1 COPIA</div>
+      <div class="t-bars"><div class="t-bar bar-low">10</div><div class="t-bar bar-low">9</div><div class="t-bar bar-good">53</div><div class="t-bar bar-mid">31</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">125</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">LINK IN BIO</div>
+      <div class="t-bars"><div class="t-bar bar-mid">4</div><div class="t-bar bar-low">1</div><div class="t-bar bar-low">2</div><div class="t-bar bar-good">9</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">104</div>
+    </div>
+    <div class="trend-row">
+      <div class="t-name">IMG_7849</div>
+      <div class="t-bars"><div class="t-bar bar-low">2</div><div class="t-bar bar-low">2</div><div class="t-bar bar-good">8</div><div class="t-bar bar-mid">5</div></div>
+      <div style="text-align:right;font-size:12px;color:var(--muted);">103</div>
+    </div>
+  </div>
+  <p class="note-mini">Las barras muestran agendas por mes para cada anuncio. Verde = mes con mayor actividad del anuncio. Beige = mes con menor actividad. Gris = sin datos.</p>
+
+  <div class="section-end">
+    Los anuncios no tienen actividad uniforme a lo largo del periodo. Algunos concentran su actividad en uno o dos meses concretos. Esto sugiere que el catálogo de creativos rota y que cada mes se prueban combinaciones diferentes. La información de cuándo estuvo activo cada anuncio y con qué presupuesto está fuera del alcance de este análisis.
+  </div>
+</div>
+
+<div class="closing">
+  <div class="c-tag">Para qué sirve este análisis</div>
+  <h3>Visibilidad para la toma de decisiones</h3>
+  <p>Este documento describe el comportamiento del lead por fuente y por anuncio durante los cuatro meses analizados. <strong>No emite recomendaciones operativas</strong> sobre presupuesto o priorización.</p>
+  <p>Cualquier decisión operativa debería cruzarse con información que este análisis no cubre: histórico de inversión por anuncio, contexto creativo de cada campaña, presupuestos asignados y atribución multitouch en fuentes orgánicas.</p>
+</div>
 
 </div>
 
@@ -394,6 +2183,19 @@ h1 em { font-style: italic; color: var(--accent); }
     </div>
   </div>
 </footer>
+
+<script>
+// Month tabs
+document.querySelectorAll('.month-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const month = tab.dataset.month;
+    document.querySelectorAll('.month-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.month-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.month-panel[data-month="${month}"]`).classList.add('active');
+  });
+});
+</script>
 
 </body>
 </html>
