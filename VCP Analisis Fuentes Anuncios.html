@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>VCP — Análisis por fuente y por anuncio · Q1 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0F0F0F;
+  --paper: #FAF8F4;
+  --paper-2: #F0EDE6;
+  --line: #DDD8CD;
+  --muted: #6E6A60;
+  --accent: #C8602F;
+  --accent-soft: #E29874;
+  --green: #4A7C59;
+  --green-bg: #E8F0EA;
+  --amber: #B8862E;
+  --amber-bg: #FBF2DE;
+  --red: #B83A2E;
+  --red-bg: #F8E5E2;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 70px 40px 40px; }
+
+.eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; margin-bottom: 16px;
+}
+h1 {
+  font-family: var(--serif); font-size: clamp(36px, 5vw, 50px);
+  font-weight: 500; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 20px;
+}
+h1 em { font-style: italic; color: var(--accent); }
+
+.lead {
+  font-size: 17px; line-height: 1.55; color: var(--muted);
+  max-width: 680px; margin-bottom: 32px;
+}
+
+.note {
+  background: var(--paper-2); border-left: 3px solid var(--ink);
+  padding: 18px 22px; margin-bottom: 56px;
+  font-size: 13px; line-height: 1.6; color: var(--ink);
+}
+.note strong { font-weight: 600; }
+.note .n-label {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700; color: var(--ink); margin-bottom: 8px;
+}
+
+.section-block { margin-bottom: 80px; }
+
+.section-header {
+  display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 8px; flex-wrap: wrap;
+}
+.section-header .num {
+  font-family: var(--serif); font-size: 14px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600;
+}
+.section-header h2 {
+  font-family: var(--serif); font-size: 32px;
+  font-weight: 500; letter-spacing: -0.02em; line-height: 1.1;
+}
+.section-sub {
+  font-size: 14px; color: var(--muted); margin-bottom: 28px; max-width: 720px;
+}
+
+.highlights {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin-bottom: 32px;
+}
+@media (max-width: 760px) { .highlights { grid-template-columns: 1fr; } }
+
+.hl { padding: 20px 22px; border: 1px solid var(--line); background: white; }
+.hl.green { background: var(--green-bg); border-color: #C8DBCD; }
+.hl.amber { background: var(--amber-bg); border-color: #E8D8B0; }
+.hl.red { background: var(--red-bg); border-color: #E5C7C2; }
+.hl .hl-tag {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 8px;
+}
+.hl.green .hl-tag { color: var(--green); }
+.hl.amber .hl-tag { color: var(--amber); }
+.hl.red .hl-tag { color: var(--red); }
+.hl .hl-name {
+  font-family: var(--serif); font-size: 18px; font-weight: 500;
+  margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.hl .hl-data { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.hl .hl-data strong { color: var(--ink); font-weight: 600; }
+
+.table-section h3 {
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted); margin-top: 32px; margin-bottom: 14px;
+}
+
+.data-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13.5px; background: white; border: 1px solid var(--line);
+}
+.data-table th {
+  text-align: left; padding: 12px 14px;
+  background: var(--ink); color: white;
+  font-weight: 600; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.data-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .num { text-align: right; font-feature-settings: 'tnum' 1; }
+.data-table .name { font-weight: 600; }
+
+.data-table tr.row-good { background: var(--green-bg); }
+.data-table tr.row-watch { background: var(--amber-bg); }
+.data-table tr.row-low { background: var(--red-bg); }
+
+.cell-good { color: var(--green); font-weight: 700; }
+.cell-watch { color: var(--amber); font-weight: 700; }
+.cell-low { color: var(--red); font-weight: 700; }
+
+.note-mini {
+  font-size: 12px; color: var(--muted); font-style: italic;
+  margin-top: 10px; line-height: 1.5;
+}
+
+.section-end {
+  margin-top: 24px; padding: 16px 22px;
+  background: white; border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  font-size: 14px; line-height: 1.6;
+}
+.section-end strong { font-weight: 600; }
+
+.defs {
+  display: flex; flex-wrap: wrap; gap: 0;
+  margin: 18px 0 28px;
+  border: 1px solid var(--line); background: white;
+}
+.defs .d {
+  flex: 1; min-width: 160px; padding: 14px 18px;
+  border-right: 1px solid var(--line);
+}
+.defs .d:last-child { border-right: none; }
+.defs .d-tag {
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  font-weight: 700; color: var(--accent); margin-bottom: 6px;
+}
+.defs .d-text { font-size: 13px; color: var(--ink); line-height: 1.5; }
+@media (max-width: 760px) {
+  .defs .d { border-right: none; border-bottom: 1px solid var(--line); }
+  .defs .d:last-child { border-bottom: none; }
+}
+
+.closing {
+  margin-top: 60px; padding: 28px 32px;
+  background: var(--ink); color: white;
+}
+.closing .c-tag {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700; color: var(--accent-soft); margin-bottom: 12px;
+}
+.closing h3 {
+  font-family: var(--serif); font-size: 24px; font-weight: 500;
+  margin-bottom: 14px; line-height: 1.2;
+}
+.closing p {
+  font-size: 14px; line-height: 1.6;
+  color: rgba(255,255,255,0.75); margin-bottom: 8px;
+}
+.closing p:last-child { margin-bottom: 0; }
+.closing strong { color: white; font-weight: 600; }
+
+.footer {
+  padding: 32px 40px; background: var(--paper-2);
+  margin-top: 0; border-top: 1px solid var(--line);
+}
+.footer-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 18px;
+}
+.footer-brand {
+  font-family: var(--serif); font-size: 16px;
+  font-weight: 500; margin-bottom: 4px;
+}
+.footer-brand .accent { color: var(--accent); }
+.footer-sub { font-size: 12px; color: var(--muted); }
+.footer-sig p { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.6; }
+@media (max-width: 600px) { .footer-sig p { text-align: left; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="eyebrow">Análisis solicitado · Enero–Abril 2026</div>
+  <h1>Análisis por <em>fuente</em><br>y por anuncio.</h1>
+  <p class="lead">Visibilidad sobre el comportamiento del lead que entra al embudo según la fuente directa y el anuncio de origen.</p>
+
+  <div class="note">
+    <div class="n-label">Cómo leer estos datos</div>
+    Los datos por <strong>fuente directa</strong> describen el calendario por el que el lead agendó. Una persona puede haber conocido VCP por podcast y agendar después por otra vía sin que el podcast quede registrado. Los datos por <strong>anuncio (ADS)</strong> tienen atribución directa: cada lead queda asociado al anuncio específico de origen.
+  </div>
+
+  <!-- SECCIÓN 01 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="num">01</span>
+      <h2>Cualificación por fuente directa</h2>
+    </div>
+    <p class="section-sub">9.165 leads únicos · Promedio global: 30,5% cualificados ($1k+) · 35,3% sin capacidad (&lt;$500)</p>
+
+    <div class="highlights">
+      <div class="hl green">
+        <div class="hl-tag">Mejor cualificación</div>
+        <div class="hl-name">Setting</div>
+        <div class="hl-data">Solo <strong>27,5% &lt;$500</strong> · 33,4% cualificados · Tendencia mejorando: 33% → 22% en cuatro meses</div>
+      </div>
+      <div class="hl green">
+        <div class="hl-tag">Mejor podcast</div>
+        <div class="hl-name">Josué Peña</div>
+        <div class="hl-data"><strong>40,5% cualificados</strong> · 29,8% &lt;$500 · El podcast con mejor perfil de audiencia</div>
+      </div>
+      <div class="hl amber">
+        <div class="hl-tag">Tendencia a observar</div>
+        <div class="hl-name">Nayo</div>
+        <div class="hl-data">% &lt;$500 sube de <strong>35% en Enero a 50% en Abril</strong> · El cambio más marcado del periodo</div>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <h3>Distribución por fuente directa (4 meses)</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Fuente</th><th class="num">Leads</th><th class="num">% &lt;$500</th><th class="num">% Cualificados ($1k+)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">ADS</td><td class="num">2.227</td><td class="num">36,0%</td><td class="num">32,6%</td></tr>
+          <tr><td class="name">Nayo</td><td class="num">1.012</td><td class="num">37,2%</td><td class="num">28,1%</td></tr>
+          <tr><td class="name">Consultoría 1A1</td><td class="num">965</td><td class="num">36,5%</td><td class="num">31,1%</td></tr>
+          <tr class="row-good"><td class="name">Setting</td><td class="num">873</td><td class="num"><span class="cell-good">27,5%</span></td><td class="num">33,4%</td></tr>
+          <tr><td class="name">YouTube</td><td class="num">651</td><td class="num">30,4%</td><td class="num">30,7%</td></tr>
+          <tr><td class="name">Andrés Garza</td><td class="num">204</td><td class="num">40,7%</td><td class="num">21,1%</td></tr>
+          <tr><td class="name">YouTube Live</td><td class="num">156</td><td class="num">32,7%</td><td class="num">30,8%</td></tr>
+          <tr class="row-good"><td class="name">Josué Peña</td><td class="num">84</td><td class="num">29,8%</td><td class="num"><span class="cell-good">40,5%</span></td></tr>
+          <tr><td class="name">Moris Dieck</td><td class="num">79</td><td class="num">38,0%</td><td class="num">21,5%</td></tr>
+          <tr><td class="name">Rodner</td><td class="num">65</td><td class="num">30,8%</td><td class="num">38,5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-section">
+      <h3>Evolución mes a mes — % de leads &lt;$500</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Fuente</th><th class="num">Enero</th><th class="num">Febrero</th><th class="num">Marzo</th><th class="num">Abril</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-watch"><td class="name">Nayo</td><td class="num">35%</td><td class="num">34%</td><td class="num">49%</td><td class="num"><span class="cell-watch">50%</span></td></tr>
+          <tr><td class="name">ADS</td><td class="num">34%</td><td class="num">36%</td><td class="num">36%</td><td class="num">39%</td></tr>
+          <tr><td class="name">Consultoría 1A1</td><td class="num">36%</td><td class="num">40%</td><td class="num">33%</td><td class="num">37%</td></tr>
+          <tr><td class="name">YouTube</td><td class="num">30%</td><td class="num">28%</td><td class="num">37%</td><td class="num">32%</td></tr>
+          <tr class="row-good"><td class="name">Setting</td><td class="num">33%</td><td class="num">24%</td><td class="num">23%</td><td class="num"><span class="cell-good">22%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-end">
+      Setting es la fuente con mejor cualificación financiera del lead que entra y es la única con tendencia decreciente clara en % de leads sin capacidad. Nayo y ADS muestran tendencia creciente. Consultoría 1A1 y YouTube se mantienen en rangos similares.
+    </div>
+  </div>
+
+  <!-- SECCIÓN 02 -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="num">02</span>
+      <h2>Análisis por anuncio (ADS)</h2>
+    </div>
+    <p class="section-sub">~17.000 optins en 4 meses · 12% conversión optin a agenda · Ticket medio $1.600</p>
+
+    <div class="highlights">
+      <div class="hl green">
+        <div class="hl-tag">Mejor cualificación</div>
+        <div class="hl-name">Ad 7 — Perdiste antes</div>
+        <div class="hl-data"><strong>64% cualificados</strong> · solo 9% &lt;$500 · Ticket $3.048 · Volumen bajo (46 optins)</div>
+      </div>
+      <div class="hl green">
+        <div class="hl-tag">Mejor balance</div>
+        <div class="hl-name">Reel IA 1</div>
+        <div class="hl-data">1.554 optins · <strong>49% show rate</strong> · 35% conversión · CC $50,6k</div>
+      </div>
+      <div class="hl red">
+        <div class="hl-tag">Métrica a observar</div>
+        <div class="hl-name">Reel Gladys 6</div>
+        <div class="hl-data">4.235 optins pero <strong>solo 2% agenda</strong> · 49% &lt;$500 · Ticket $1.167</div>
+      </div>
+    </div>
+
+    <div class="defs">
+      <div class="d">
+        <div class="d-tag">Optin</div>
+        <div class="d-text">Dejó email en el formulario</div>
+      </div>
+      <div class="d">
+        <div class="d-tag">Agenda</div>
+        <div class="d-text">Agendó al menos una cita</div>
+      </div>
+      <div class="d">
+        <div class="d-tag">Showed</div>
+        <div class="d-text">Se presentó a la llamada</div>
+      </div>
+      <div class="d">
+        <div class="d-tag">Compró</div>
+        <div class="d-text">Cerró venta</div>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <h3>Embudo completo por anuncio · ordenado por CC</h3>
+      <div style="overflow-x:auto;">
+      <table class="data-table" style="min-width:1100px;">
+        <thead>
+          <tr>
+            <th>Anuncio</th>
+            <th class="num">Optin</th>
+            <th class="num">Agenda</th>
+            <th class="num">AG/Opt</th>
+            <th class="num">Showed</th>
+            <th class="num">SH/AG</th>
+            <th class="num">Ventas</th>
+            <th class="num">C/SH</th>
+            <th class="num">CC</th>
+            <th class="num">Ticket</th>
+            <th class="num">&lt;$500</th>
+            <th class="num">$1k+</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Ad 2 (genérico)</td><td class="num">4.699</td><td class="num">558</td><td class="num">12%</td><td class="num">219</td><td class="num">39%</td><td class="num">45</td><td class="num">21%</td><td class="num">$72,7k</td><td class="num">$1.616</td><td class="num">40%</td><td class="num">29%</td></tr>
+          <tr><td class="name">VCP 3 Hook 1 (30-40)</td><td class="num">3.392</td><td class="num">471</td><td class="num">14%</td><td class="num">163</td><td class="num">35%</td><td class="num">36</td><td class="num">22%</td><td class="num">$55,0k</td><td class="num">$1.527</td><td class="num">41%</td><td class="num">27%</td></tr>
+          <tr class="row-good"><td class="name">Reel IA 1</td><td class="num">1.554</td><td class="num">195</td><td class="num">13%</td><td class="num">96</td><td class="num"><span class="cell-good">49%</span></td><td class="num">34</td><td class="num"><span class="cell-good">35%</span></td><td class="num">$50,6k</td><td class="num">$1.489</td><td class="num">34%</td><td class="num">34%</td></tr>
+          <tr><td class="name">FB TOFU Editado 1</td><td class="num">1.114</td><td class="num">198</td><td class="num">18%</td><td class="num">86</td><td class="num">43%</td><td class="num">21</td><td class="num">24%</td><td class="num">$38,8k</td><td class="num">$1.849</td><td class="num">35%</td><td class="num">37%</td></tr>
+          <tr><td class="name">Ad 8 - VCP 40 años</td><td class="num">1.017</td><td class="num">170</td><td class="num">17%</td><td class="num">68</td><td class="num">40%</td><td class="num">16</td><td class="num">24%</td><td class="num">$27,5k</td><td class="num">$1.719</td><td class="num">38%</td><td class="num">33%</td></tr>
+          <tr><td class="name">Ad 1 - Copia</td><td class="num">125</td><td class="num">103</td><td class="num">82%</td><td class="num">54</td><td class="num">52%</td><td class="num">15</td><td class="num">28%</td><td class="num">$24,1k</td><td class="num">$1.605</td><td class="num">39%</td><td class="num">32%</td></tr>
+          <tr class="row-good"><td class="name">Link in Bio</td><td class="num">104</td><td class="num">24</td><td class="num">23%</td><td class="num">13</td><td class="num">54%</td><td class="num">6</td><td class="num"><span class="cell-good">46%</span></td><td class="num">$17,1k</td><td class="num"><span class="cell-good">$2.844</span></td><td class="num">32%</td><td class="num">25%</td></tr>
+          <tr class="row-low"><td class="name">Reel Gladys 6</td><td class="num">4.235</td><td class="num">91</td><td class="num"><span class="cell-low">2%</span></td><td class="num">35</td><td class="num">38%</td><td class="num">14</td><td class="num">40%</td><td class="num">$16,3k</td><td class="num"><span class="cell-low">$1.167</span></td><td class="num"><span class="cell-low">49%</span></td><td class="num">24%</td></tr>
+          <tr class="row-good"><td class="name">Ad 5 - Compré tarjeta</td><td class="num">344</td><td class="num">58</td><td class="num">17%</td><td class="num">27</td><td class="num">47%</td><td class="num">7</td><td class="num">26%</td><td class="num">$15,1k</td><td class="num"><span class="cell-good">$2.158</span></td><td class="num">28%</td><td class="num"><span class="cell-good">41%</span></td></tr>
+          <tr class="row-good"><td class="name">Carrusel 1</td><td class="num">55</td><td class="num">43</td><td class="num">78%</td><td class="num">25</td><td class="num"><span class="cell-good">58%</span></td><td class="num">9</td><td class="num">36%</td><td class="num">$10,9k</td><td class="num">$1.213</td><td class="num"><span class="cell-good">18%</span></td><td class="num"><span class="cell-good">47%</span></td></tr>
+          <tr class="row-good"><td class="name">Ad 7 - Perdiste antes</td><td class="num">46</td><td class="num">9</td><td class="num">20%</td><td class="num">6</td><td class="num"><span class="cell-good">67%</span></td><td class="num">2</td><td class="num">33%</td><td class="num">$6,1k</td><td class="num"><span class="cell-good">$3.048</span></td><td class="num"><span class="cell-good">9%</span></td><td class="num"><span class="cell-good">64%</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note-mini">Filas verdes: anuncios con cualificación o conversión por encima del promedio. Fila roja: ratio Optin → Agenda significativamente bajo.</p>
+    </div>
+
+    <div class="section-end">
+      Los anuncios de mayor volumen (Ad 2, VCP 3 Hook 1, Reel Gladys 6) concentran ~73% de los optins totales con % de leads &lt;$500 entre 40-49%. Los anuncios con mejor cualificación (Ad 7, Carrusel 1, Ad 5) tienen volúmenes bajos pero ticket medio entre $1.213 y $3.048 y % cualificados entre 41-64%.
+    </div>
+  </div>
+
+  <div class="closing">
+    <div class="c-tag">Para qué sirve este análisis</div>
+    <h3>Visibilidad para la toma de decisiones</h3>
+    <p>Este documento describe el comportamiento del lead por fuente y por anuncio. <strong>No emite recomendaciones operativas</strong> sobre presupuesto o priorización.</p>
+    <p>Cualquier decisión debería cruzarse con información que este análisis no cubre: histórico de inversión por anuncio, contexto creativo de cada campaña y atribución multitouch en fuentes orgánicas.</p>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">VCP <span class="accent">·</span> Análisis Q1 2026</div>
+      <div class="footer-sub">Análisis por fuente y por anuncio · Enero–Abril 2026</div>
+    </div>
+    <div class="footer-sig">
+      <p>Preparado por Sales Hacking<br>28 de Abril de 2026</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
